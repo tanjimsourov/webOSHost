@@ -1,0 +1,13 @@
+{
+    "id":  "com.smc.signage",
+    "version":  "1.0.0",
+    "vendor":  "Smc",
+    "type":  "web",
+    "main":  "index.html",
+    "title":  "Smc Signage",
+    "icon":  "icon.png",
+    "largeIcon":  "largeIcon.png",
+    "splashBackground":  "splash.png",
+    "uiRevision":  "2"
+}
+

@@ -1,0 +1,3 @@
+[     215ms] Missing catch or finally after try
+[     215ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://127.0.0.1:4173/favicon.ico:0
+[   40409ms] [WARNING] [SETTINGS] Device not authorized, redirecting to login @ http://127.0.0.1:4173/js/services/debug_overlay.js:132

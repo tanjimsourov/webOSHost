@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Home</title>
+  </head>
+  <body>
+    <!--
+      This layout mirrors the Android HomeActivity/Player layout.  It
+      contains placeholders for playlists, songs, download progress,
+      waiting indicators and the token display.  The IDs and structure
+      here are intentionally kept identical to the player template so
+      that existing scripts can locate and manipulate the elements
+      without modification.  See activity_player.html for reference.
+    -->
+    <div class="player-screen android-layout-root">
+      <div id="mainContainer" data-type="layout" class="relativelayout">
+        <!-- Rotating image layer used for static images and placeholders -->
+        <div id="rotateimg" data-type="layout" class="rotatelayout">
+          <img id="previmg" data-type="image" />
+        </div>
+        <!-- Rotating advertisement video layer -->
+        <div id="rotatevideo1" data-type="layout" class="rotatelayout">
+          <div id="video_viewads" data-type="lvideoads"></div>
+        </div>
+        <!-- Timer display used during countdowns -->
+        <span id="txttimer" data-type="text">00</span>
+        <!-- Container for progress indicator, token text and waiting message -->
+        <div id="relative_container" data-type="layout" class="relativelayout">
+          <!-- Token ID shows the currently logged in token (kept outside overlay for parity during playback) -->
+          <span id="txtTokenId" data-type="text">Token ID</span>
+
+          <!-- Branded status overlay (shown during sync/download/wait) -->
+          <div id="smcStatusOverlay" class="smc-status-overlay">
+            <div class="smc-status-card">
+              <img class="smc-status-logo" src="assets/images/smclogin.png" alt="SMC" />
+              <div class="smc-status-lines">
+                <div id="smcTokenLine" class="smc-token-line"></div>
+              <span id="smcDownloadPhase" class="smc-download-phase"></span>
+              <span id="smcDownloadMeta" class="smc-download-meta"></span>
+              <span id="txtWaitingContent" data-type="text">Waiting for content...</span>
+                <span id="txtWritingFile" data-type="text"></span>
+                <div class="smc-progress-row">
+                  <div id="p_Bar2" data-type="progressbar"></div>
+                  <div id="circularProgress" data-type="progressbar"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <img id="waitimg" data-type="image" />
+          <div id="smcPlaybackHud" class="smc-playback-hud" aria-live="polite">
+            <div id="smcPlaybackState" class="smc-playback-state">Waiting for playlist...</div>
+            <div id="smcPlaybackTrack" class="smc-playback-track"></div>
+            <div id="smcPlaybackQueue" class="smc-playback-queue"></div>
+          </div>
+          <!-- Playlists list will be populated by HomeController -->
+          <div id="listViewPlaylists" data-type="listview"></div>
+        </div>
+        <!-- List of songs belonging to the selected playlist -->
+        <div id="listViewSongs" data-type="listview"></div>
+        <!-- Rotating video layer for regular content -->
+        <div id="rotatevideo" data-type="layout" class="rotatelayout">
+          <div id="video_view" data-type="myclaudvideoview"></div>
+        </div>
+        <!-- Rotating web view layer for web content playback -->
+        <div id="rotateweb" data-type="layout" class="rotatelayout">
+          <div id="webView" data-type="webview"></div>
+        </div>
+        <!-- Marker image used to indicate currently playing item -->
+        <img id="marker" data-type="image" />
+        <!-- Text shown while writing files to disk (moved into the overlay card) -->
+        <!-- Included layouts for mp3 and black overlay -->
+        <div id="mp3layout" data-type="include"></div>
+        <div id="blacklayout" data-type="include"></div>
+      </div>
+    </div>
+  </body>
+</html>
+
+

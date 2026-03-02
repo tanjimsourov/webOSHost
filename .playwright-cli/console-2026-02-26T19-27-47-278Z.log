@@ -1,0 +1,3 @@
+[     264ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://127.0.0.1:4173/favicon.ico:0
+[   12052ms] [WARNING] [LOGIN] Username missing @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[   60438ms] [WARNING] [LOGIN] Invalid login credentials @ http://127.0.0.1:4173/js/services/debug_overlay.js:132

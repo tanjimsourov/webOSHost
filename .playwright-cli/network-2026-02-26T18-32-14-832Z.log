@@ -1,0 +1,6 @@
+[GET] http://127.0.0.1:4173/templates/activity_login.html => [200] OK
+[POST] https://applicationaddons.com/api/AppLogin => [200] 
+[POST] https://applicationaddons.com/api/CheckUserRightsLive_bulk => [200] 
+[POST] https://applicationaddons.com/api/GetPlaylistsSchedule => [200] 
+[POST] https://applicationaddons.com/api/GetPlaylistsContent => [200] 
+[GET] http://127.0.0.1:4173/templates/activity_main.html => [200] OK

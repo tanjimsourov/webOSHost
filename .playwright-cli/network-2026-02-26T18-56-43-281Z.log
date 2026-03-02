@@ -1,0 +1,2 @@
+[GET] http://127.0.0.1:4173/templates/activity_login.html => [200] OK
+[POST] https://applicationaddons.com/api/AppLogin => [200] 

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smc Signage</title>
+  <link rel="stylesheet" href="css/app.css"/>
+</head>
+<body>
+  <!--
+    The root of the webOS application. All route templates are injected
+    into this element by the router. The body itself remains empty so
+    that templates control their own layouts.
+  -->
+  <div id="app"></div>
+
+  <!-- State and storage -->
+  <script src="js/state/store.js"></script>
+  <script src="js/storage/prefs.js"></script>
+
+  <!-- Security + production utilities (added for production hardening) -->
+  <script src="js/security/SecurityManager.js"></script>
+  <script src="js/utils/ErrorHandler.js"></script>
+  <script src="js/utils/ResourceManager.js"></script>
+  <script src="js/utils/OfflineManager.js"></script>
+  <script src="js/utils/api_parity_check.js"></script>
+
+  <script>
+    // Ensure a safe helper exists early in case api_parity_check didn't run yet
+    if (typeof window.dmIsRunning !== 'function') {
+      window.dmIsRunning = function (dm) {
+        try {
+          if (!dm) return false;
+          if (typeof dm.isRunning === 'function') return !!dm.isRunning();
+          return !!dm.isRunning;
+        } catch (e) {
+          return false;
+        }
+      };
+    }
+  </script>
+  <script>
+    // Local development: set a media proxy base when running from localhost.
+    // The proxy server is an optional Node script at tools/media_proxy.js.
+    try {
+      if (window.location && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+        window.PROXY_MEDIA_BASE = 'http://localhost:3000/proxy?url=';
+        window.PROXY_API_BASE = 'http://localhost:3000/proxy?url=';
+        console.log('[DEV] PROXY_MEDIA_BASE enabled:', window.PROXY_MEDIA_BASE);
+        console.log('[DEV] PROXY_API_BASE enabled:', window.PROXY_API_BASE);
+      } else {
+        window.PROXY_MEDIA_BASE = null;
+        window.PROXY_API_BASE = null;
+      }
+    } catch (e) {
+      window.PROXY_MEDIA_BASE = null;
+    }
+  </script>
+  <script>
+    // Local-only cache clearing helper.
+    // Usage: visit http://localhost:8080/?clearCache=1
+    (function () {
+      try {
+        if (!(window.location && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'))) return;
+        var params = new URLSearchParams(window.location.search);
+        if (!params.get('clearCache')) return;
+
+        console.log('[DEV] clearCache flag detected — clearing caches, localStorage, indexedDB and service workers');
+
+        (async function clearAll() {
+          try {
+            // Clear Cache Storage
+            if (window.caches && typeof window.caches.keys === 'function') {
+              var keys = await caches.keys();
+              for (var i = 0; i < keys.length; i++) {
+                try { await caches.delete(keys[i]); } catch (e) { /* ignore */ }
+              }
+            }
+
+            // Clear known app localStorage keys (best-effort)
+            try {
+              // remove download manager state and preferences if present
+              localStorage.removeItem('download_manager_state');
+            } catch (e) {}
+
+            // Optionally clear all localStorage for localhost
+            try { localStorage.clear(); } catch (e) {}
+
+            // Unregister service workers
+            if (navigator.serviceWorker && navigator.serviceWorker.getRegistrations) {
+              var regs = await navigator.serviceWorker.getRegistrations();
+              for (var r = 0; r < regs.length; r++) {
+                try { await regs[r].unregister(); } catch (e) {}
+              }
+            }
+
+            // Try to delete IndexedDB databases (best-effort). We cannot list DBs in all browsers,
+            // but attempt to delete common names used by this app.
+            try {
+              var dbs = ['AlenkaMedia', 'IDBDatabase', 'songs-db', 'advertisement-db'];
+              for (var d = 0; d < dbs.length; d++) {
+                try { indexedDB.deleteDatabase(dbs[d]); } catch (e) {}
+              }
+            } catch (e) {}
+
+            console.log('[DEV] clearCache: complete — reloading');
+            // Remove the query param and reload to avoid repeating the clear
+            params.delete('clearCache');
+            var newSearch = params.toString();
+            var newUrl = window.location.protocol + '//' + window.location.host + window.location.pathname + (newSearch ? '?' + newSearch : '');
+            window.location.replace(newUrl);
+          } catch (err) {
+            console.error('[DEV] clearCache failed', err);
+          }
+        })();
+      } catch (outer) {}
+    })();
+  </script>
+
+  <!-- Device identity and platform bridge -->
+  <script src="js/device/device_identity.js"></script>
+  <script src="js/platform/webos_bridge.js"></script>
+
+  <!-- UI dialogs (AlertDialog/Toast/ProgressDialog parity layer) -->
+  <script src="js/ui/DialogManager.js"></script>
+  <!-- Branded waiting/download overlay (keeps Java workflow, improves presentation) -->
+  <script src="js/ui/status_overlay.js"></script>
+
+  <!-- Controllers (route lifecycle wiring) -->
+  <script src="js/controllers/_base_controller.js"></script>
+  <script src="js/controllers/splashController.js"></script>
+  <script src="js/controllers/loginController.js?v=20260227.1"></script>
+  <script src="js/controllers/homeController.js"></script>
+  <script src="js/controllers/settingsController.js"></script>
+  <script src="js/controllers/playerController.js"></script>
+  <script src="js/controllers/_controller_registry.js"></script>
+
+  <!-- Router (focus engine included) and application bootstrap -->
+  <script src="js/router.js"></script>
+  <script src="js/app.js"></script>
+
+  <!-- Network and data layer -->
+  <script src="js/net/endpoints.js"></script>
+  <script src="js/net/api.js"></script>
+  <script src="js/storage/db.js"></script>
+  <script src="js/storage/PlaylistDataSource.js"></script>
+  <script src="js/storage/SongsDataSource.js"></script>
+  <script src="js/storage/AdvertisementDataSource.js"></script>
+  <script src="js/storage/PlayerStatusDataSource.js"></script>
+  <script src="js/storage/PrayerDataSource.js"></script>
+
+  <!-- Engines -->
+  <script src="js/engine/playlist_manager.js"></script>
+  <script src="js/engine/playlist_watcher.js"></script>
+  <!-- Advertising engine and download/player modules added for webOS parity -->
+  <script src="js/engine/ads_manager.js"></script>
+  <script src="js/engine/prayer_manager.js"></script>
+  <script src="js/download/download_manager.js?v=20260227.1"></script>
+  <script src="js/player/player.js"></script>
+
+  <!-- SECTION 1: Status reporting (login, heartbeat, played song/ad, logout) -->
+  <script src="js/status/status_reporter.js"></script>
+
+  <!-- SECTION 2: Background scheduler and watchdog services -->
+  <script src="js/services/scheduler.js"></script>
+  <script src="js/services/watchdog_service.js"></script>
+  <script src="js/services/application_checker.js"></script>
+  <script src="js/services/debug_overlay.js"></script>
+
+  <!--
+    Load the official Microsoft SignalR client library from a CDN.
+    Without this script the global `signalR` object may be undefined
+    or point to an older implementation lacking the `HubConnectionBuilder`.
+    Refer to https://cdnjs.com/libraries/microsoft-signalr for the latest
+    version. Placing this before our `signalr_client.js` ensures the
+    library is available when building the hub connection.
+  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js"></script>
+
+  <!-- SECTION 3: SignalR remote control client -->
+  <script src="js/realtime/signalr_client.js"></script>
+
+  <!-- SECTION 4: Receivers (lifecycle and alarm-like events) -->
+  <script src="js/receivers/myreceiver.js"></script>
+  <script src="js/receivers/launchreceiver.js"></script>
+
+  <!-- SECTION 5: Workers (job scheduling wrapper) -->
+  <script src="js/workers/myworker.js"></script>
+
+  <!-- SECTION 6: Storage utilities and cleanup -->
+  <script src="js/utils/storageutils.js"></script>
+  <script src="js/engine/additional_songs_removal.js"></script>
+  <script>
+    if (window.DebugOverlay && typeof window.DebugOverlay.init === 'function') {
+      var enableDebugOverlay = false;
+      try {
+        var params = new URLSearchParams(window.location.search || '');
+        enableDebugOverlay = params.get('debugOverlay') === '1';
+        if (!enableDebugOverlay) {
+          localStorage.removeItem('smc_debug_overlay');
+        }
+      } catch (e) {
+        enableDebugOverlay = false;
+      }
+      if (enableDebugOverlay) {
+        window.DebugOverlay.init();
+      }
+    }
+  </script>
+</body>
+</html>
+
+

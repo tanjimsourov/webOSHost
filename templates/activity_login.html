@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+</head>
+<body>
+  <div class="login-screen">
+    <div class="login-panel">
+      <header class="login-logo-wrap">
+        <img id="imageLogin" class="login-logo" src="assets/images/smclogin.png" alt="SMC" />
+      </header>
+
+      <div class="login-form">
+        <label class="login-input-row" for="edit_username">
+          <span class="login-label">User Name</span>
+          <input type="text" id="edit_username" class="login-field" placeholder="User Name" autocomplete="off" autocapitalize="none" spellcheck="false" />
+        </label>
+
+        <label class="login-input-row" for="edit_tokenNo">
+          <span class="login-label">Token No</span>
+          <input type="text" id="edit_tokenNo" class="login-field" placeholder="Token No" autocomplete="off" autocapitalize="none" spellcheck="false" />
+        </label>
+
+        <input type="text" id="edit_dealerCode" class="login-hidden" tabindex="-1" aria-hidden="true" />
+      </div>
+
+      <footer class="login-action-row">
+        <button type="button" id="btn_Cancel" class="login-action-btn cancel" aria-label="Cancel">
+          <span class="login-action-icon" aria-hidden="true">&#10005;</span>
+        </button>
+        <button type="button" id="btn_Submit" class="login-action-btn submit" aria-label="Confirm">
+          <span class="login-action-icon" aria-hidden="true">&#10003;</span>
+        </button>
+      </footer>
+
+      <div id="loginStatusMessage" class="login-status-message" role="status" aria-live="polite"></div>
+    </div>
+  </div>
+</body>
+</html>

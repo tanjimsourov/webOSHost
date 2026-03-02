@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+</head>
+<body>
+  <div class="settings-screen">
+    <div class="settings-card">
+      <header class="settings-logo-wrap">
+        <img id="imageLogin" class="settings-logo" src="assets/images/smclogin.png" alt="SMC" />
+      </header>
+
+      <main class="settings-body">
+        <section class="settings-section">
+          <h2 class="settings-title">Rotation</h2>
+          <div id="groupradio" class="settings-options" role="radiogroup" aria-label="Rotation">
+            <label class="settings-option" for="radia_0">
+              <input type="radio" id="radia_0" name="rotation" value="0" />
+              <span>0 (Landscape Normal)</span>
+            </label>
+            <label class="settings-option" for="radia_90">
+              <input type="radio" id="radia_90" name="rotation" value="90" />
+              <span>90 (Portrait Right)</span>
+            </label>
+            <label class="settings-option" for="radia_180">
+              <input type="radio" id="radia_180" name="rotation" value="180" />
+              <span>180 (Inverse Landscape)</span>
+            </label>
+            <label class="settings-option" for="radia_270">
+              <input type="radio" id="radia_270" name="rotation" value="270" />
+              <span>270 (Portrait Left)</span>
+            </label>
+          </div>
+        </section>
+
+        <section class="settings-section">
+          <h2 class="settings-title">StartUp</h2>
+          <div id="groupradiostartup" class="settings-options" role="radiogroup" aria-label="StartUp">
+            <label class="settings-option" for="radio_auto">
+              <input type="radio" id="radio_auto" name="startup" value="auto" />
+              <span>Auto</span>
+            </label>
+            <label class="settings-option" for="radio_manual">
+              <input type="radio" id="radio_manual" name="startup" value="manual" />
+              <span>Manual</span>
+            </label>
+          </div>
+        </section>
+
+        <section class="settings-section">
+          <h2 class="settings-title">Permissions</h2>
+          <div class="settings-options">
+            <label class="settings-option" for="checkBoxAppsoverApps">
+              <input type="checkbox" id="checkBoxAppsoverApps" />
+              <span>Apps over Apps</span>
+            </label>
+            <label class="settings-option" for="checkBoxStorageApp">
+              <input type="checkbox" id="checkBoxStorageApp" />
+              <span>Storage</span>
+            </label>
+            <label class="settings-option" for="checkBoxHideDownloadPopup">
+              <input type="checkbox" id="checkBoxHideDownloadPopup" />
+              <span>Hide Download Popup Always</span>
+            </label>
+          </div>
+        </section>
+      </main>
+
+      <footer class="settings-footer">
+        <button id="btn_Submit1" class="settings-save-btn" type="button">Save</button>
+      </footer>
+
+      <div id="progress_view1" aria-hidden="true"></div>
+      <div id="txtloading" aria-live="polite"></div>
+    </div>
+  </div>
+</body>
+</html>

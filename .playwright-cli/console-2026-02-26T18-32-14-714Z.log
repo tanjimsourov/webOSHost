@@ -1,0 +1,28 @@
+Total messages: 26 (Errors: 2, Warnings: 0)
+
+[LOG] Device identity: {deviceId: 0d501a1b-1c6e-42ee-b1a1-20c234507d42, macAddress: 00:00:00:00:00:00, macAddressAlt: 00:00:00:00:00:00, serialNumber: SN-0d501a1b-1c6e-42ee-b1a1-20c234507d42} @ http://127.0.0.1:4173/js/app.js:75
+[LOG] [APP] Bootstrap complete. Android-parity modules loaded. @ http://127.0.0.1:4173/js/app.js:116
+[LOG] [DIALOG_MANAGER] DialogManager initialized @ http://127.0.0.1:4173/js/ui/DialogManager.js:36
+[LOG] [ROUTER] renderRoute START /login -> templates/activity_login.html @ http://127.0.0.1:4173/js/services/debug_overlay.js:128
+[LOG] [ROUTER] template load SUCCESS templates/activity_login.html @ http://127.0.0.1:4173/js/services/debug_overlay.js:128
+[LOG] [ROUTER] renderRoute SUCCESS /login @ http://127.0.0.1:4173/js/services/debug_overlay.js:128
+[LOG] [LOGIN] mount route=/login @ http://127.0.0.1:4173/js/services/debug_overlay.js:128
+[LOG] [ROUTER] controller mount SUCCESS /login @ http://127.0.0.1:4173/js/services/debug_overlay.js:128
+[ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://127.0.0.1:4173/favicon.ico:0
+[LOG] [LOGIN] Attempting login for BD-Husmerk @ http://127.0.0.1:4173/js/services/debug_overlay.js:128
+[LOG] [PlaylistManager] Scheduling cleanup after playlist update @ http://127.0.0.1:4173/js/services/debug_overlay.js:128
+[LOG] [Cleanup] Scheduling cleanup in 5000 ms @ http://127.0.0.1:4173/js/services/debug_overlay.js:128
+[LOG] [LOGIN] unmount route=/login @ http://127.0.0.1:4173/js/services/debug_overlay.js:128
+[LOG] [ROUTER] controller unmount SUCCESS /login @ http://127.0.0.1:4173/js/services/debug_overlay.js:128
+[LOG] [ROUTER] renderRoute START /home -> templates/activity_main.html @ http://127.0.0.1:4173/js/services/debug_overlay.js:128
+[LOG] [ROUTER] template load SUCCESS templates/activity_main.html @ http://127.0.0.1:4173/js/services/debug_overlay.js:128
+[LOG] [ROUTER] renderRoute SUCCESS /home @ http://127.0.0.1:4173/js/services/debug_overlay.js:128
+[LOG] [Cleanup] Starting cleanup task @ http://127.0.0.1:4173/js/services/debug_overlay.js:128
+[LOG] [Cleanup] Valid playlists: 1 @ http://127.0.0.1:4173/js/services/debug_overlay.js:128
+[LOG] [Cleanup] Valid title IDs: 11 @ http://127.0.0.1:4173/js/services/debug_overlay.js:128
+[LOG] [Cleanup] Last downloaded playlist index: 0 @ http://127.0.0.1:4173/js/services/debug_overlay.js:128
+[LOG] [Cleanup] Orphan songs found: 0 @ http://127.0.0.1:4173/js/services/debug_overlay.js:128
+[LOG] [StorageUtils] listFiles: (all) @ http://127.0.0.1:4173/js/services/debug_overlay.js:128
+[LOG] [StorageUtils] listFiles found: 0 files @ http://127.0.0.1:4173/js/services/debug_overlay.js:128
+[LOG] [Cleanup] Cleanup complete. Scanned: 0 Deleted: 0 Failed: 0 DB rows removed: 0 @ http://127.0.0.1:4173/js/services/debug_overlay.js:128
+Missing catch or finally after try

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+</head>
+<body>
+  <div class="player-screen android-layout-root">
+    <div id="mainContainer" class="relativelayout" data-type="layout">
+      <div id="rotateimg" class="rotatelayout" data-type="layout">
+        <img id="previmg" data-type="image" alt="" />
+      </div>
+
+      <div id="rotatevideo1" class="rotatelayout" data-type="layout">
+        <div id="video_viewads" data-type="lvideoads"></div>
+      </div>
+
+      <div id="rotatevideo" class="rotatelayout" data-type="layout">
+        <div id="video_view" data-type="myclaudvideoview"></div>
+      </div>
+
+      <div id="rotateweb" class="rotatelayout" data-type="layout">
+        <div id="webView" data-type="webview"></div>
+      </div>
+
+      <div id="relative_container" class="relativelayout" data-type="layout">
+        <span id="txtTokenId" data-type="text"></span>
+        <span id="txttimer" data-type="text">00</span>
+
+        <div id="smcStatusOverlay" class="smc-status-overlay">
+          <div class="smc-status-card">
+            <img class="smc-status-logo" src="assets/images/smclogin.png" alt="SMC" />
+            <div class="smc-status-lines">
+              <div id="smcTokenLine" class="smc-token-line"></div>
+              <span id="smcDownloadPhase" class="smc-download-phase"></span>
+              <span id="smcDownloadMeta" class="smc-download-meta"></span>
+              <span id="txtWaitingContent" data-type="text">Waiting for content...</span>
+              <span id="txtWritingFile" data-type="text"></span>
+              <div class="smc-progress-row">
+                <div id="p_Bar2" data-type="progressbar"></div>
+                <div id="circularProgress" data-type="progressbar"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <img id="waitimg" data-type="image" alt="" />
+        <div id="smcPlaybackHud" class="smc-playback-hud" aria-live="polite">
+          <div id="smcPlaybackState" class="smc-playback-state">Waiting for playlist...</div>
+          <div id="smcPlaybackTrack" class="smc-playback-track"></div>
+          <div id="smcPlaybackQueue" class="smc-playback-queue"></div>
+        </div>
+      </div>
+
+      <div id="listViewPlaylists" data-type="listview"></div>
+      <div id="listViewSongs" data-type="listview"></div>
+
+      <img id="marker" data-type="image" alt="" />
+      <div id="mp3layout" data-type="include"></div>
+      <div id="blacklayout" data-type="include"></div>
+    </div>
+  </div>
+</body>
+</html>
+
+

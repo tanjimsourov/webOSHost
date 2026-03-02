@@ -1,0 +1,7 @@
+# Purpose: ignore generated build artifacts and dependencies.
+# Render usage: dist/ is generated during CI build and served as static output.
+# Version auto update: appinfo.json is intentionally tracked so bumped versions are visible.
+
+node_modules
+dist
+*.ipk

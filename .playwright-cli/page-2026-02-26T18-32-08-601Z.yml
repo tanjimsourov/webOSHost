@@ -1,0 +1,13 @@
+- generic [active] [ref=e28]:
+  - generic [ref=e29]:
+    - img
+  - generic [ref=e31]: "00"
+  - generic:
+    - generic [ref=e32]: Token ID
+    - generic [ref=e33]:
+      - img "SMC" [ref=e34]
+      - generic [ref=e35]:
+        - generic [ref=e36]: Token ID
+        - generic [ref=e37]: Waiting for content...
+    - img
+  - img

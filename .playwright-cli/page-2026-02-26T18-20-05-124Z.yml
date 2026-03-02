@@ -1,0 +1,19 @@
+- generic [ref=e1]:
+  - generic [ref=e53]:
+    - generic [ref=e54]:
+      - img "SMC Logo" [ref=e55]
+      - paragraph [ref=e56]: Sign in with your assigned username and token number.
+    - textbox "Username" [active] [ref=e59]
+    - textbox "Token number" [ref=e62]:
+      - /placeholder: Token Number
+    - generic [ref=e63]:
+      - button "Clear fields and go back" [ref=e64] [cursor=pointer]:
+        - img "Cancel" [ref=e65]
+        - generic [ref=e66]: Cancel
+      - button "Sign in" [ref=e67] [cursor=pointer]:
+        - img "Submit" [ref=e68]
+        - generic [ref=e69]: Sign In
+    - status [ref=e70]: Enter your username and token number to continue.
+  - generic [ref=e48]:
+    - heading "Loading Settings" [level=3] [ref=e51]
+    - paragraph [ref=e52]: Saving settings...

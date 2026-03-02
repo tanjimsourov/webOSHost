@@ -1,0 +1,11 @@
+{
+  "name": "lgwebos-ipk-pipeline",
+  "version": "1.0.0",
+  "private": true,
+  "_comment_purpose": "Render CI script entrypoint for building and publishing latest.ipk.",
+  "_comment_render": "Render should run: npm run build-ipk, then serve dist/ as static output.",
+  "_comment_version": "Version auto-bumps from appinfo.json patch each build via version-bump.js.",
+  "scripts": {
+    "build-ipk": "bash build-ipk.sh"
+  }
+}

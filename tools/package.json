@@ -1,0 +1,12 @@
+{
+  "name": "lgwebos-dev-proxy",
+  "version": "1.0.0",
+  "description": "Local dev proxy for media and SignalR during testing",
+  "main": "proxy_server.js",
+  "scripts": {
+    "start": "node proxy_server.js"
+  },
+  "dependencies": {
+    "http-proxy": "^1.18.1"
+  }
+}

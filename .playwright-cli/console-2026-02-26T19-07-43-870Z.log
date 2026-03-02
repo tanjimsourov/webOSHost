@@ -1,0 +1,851 @@
+[     326ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://127.0.0.1:4173/favicon.ico:0
+[  313368ms] [ERROR] [HOME] Error getting playlists for current time: ReferenceError: setWaitingText is not defined
+    at renderPlaylists (http://127.0.0.1:4173/js/controllers/homeController.js:895:7)
+    at getPlaylistsForCurrentTime (http://127.0.0.1:4173/js/controllers/homeController.js:1603:7)
+    at initEnhancedSystem (http://127.0.0.1:4173/js/controllers/homeController.js:1401:9)
+    at Object.mount (http://127.0.0.1:4173/js/controllers/homeController.js:1436:7)
+    at renderRouteWithController (http://127.0.0.1:4173/js/router.js:139:44) @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  313394ms] [ERROR] [HOME] Error in getAdvertisements: TypeError: state.advertisementsManager.getAdvertisementsThatAreDownloaded is not a function
+    at getAdvertisements (http://127.0.0.1:4173/js/controllers/homeController.js:1092:47)
+    at initEnhancedSystem (http://127.0.0.1:4173/js/controllers/homeController.js:1404:9)
+    at Object.mount (http://127.0.0.1:4173/js/controllers/homeController.js:1436:7)
+    at renderRouteWithController (http://127.0.0.1:4173/js/router.js:139:44) @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  313395ms] [ERROR] [HOME] Error in enhanced system initialization: TypeError: state.playlistWatcher.setContext is not a function
+    at initEnhancedSystem (http://127.0.0.1:4173/js/controllers/homeController.js:1420:33)
+    at Object.mount (http://127.0.0.1:4173/js/controllers/homeController.js:1436:7)
+    at renderRouteWithController (http://127.0.0.1:4173/js/router.js:139:44) @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  313562ms] [ERROR] [HOME] Failed to render playlists ReferenceError: setWaitingText is not defined
+    at loadAndRenderPlaylists (http://127.0.0.1:4173/js/controllers/homeController.js:1330:7)
+    at http://127.0.0.1:4173/js/controllers/homeController.js:2017:9 @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  313562ms] ReferenceError: setWaitingText is not defined
+    at loadAndRenderPlaylists (http://127.0.0.1:4173/js/controllers/homeController.js:1335:7)
+    at http://127.0.0.1:4173/js/controllers/homeController.js:2017:9
+[  314490ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  314496ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  314503ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  314504ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayerHeartBeatStatusJsonArray:0
+[  314505ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  314506ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayerLoginStatusJsonArray:0
+[  314507ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PrayerTiming:0
+[  314530ms] [ERROR] [PRAYER] _handlePrayerResponse parse FAIL SyntaxError: Unexpected token '<', "<Fault xml"... is not valid JSON
+    at JSON.parse (<anonymous>)
+    at Object._handlePrayerResponse (http://127.0.0.1:4173/js/engine/prayer_manager.js:158:56)
+    at Object.onResponse (http://127.0.0.1:4173/js/engine/prayer_manager.js:136:20)
+    at http://127.0.0.1:4173/js/net/api.js:64:22 @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  314702ms] [ERROR] Access to fetch at 'https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1' from origin 'http://127.0.0.1:4173' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:4173/#/home:0
+[  314704ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1:0
+[  314710ms] [WARNING] [2026-02-26T19:12:58.573Z] Warning: Error from HTTP request. TypeError: Failed to fetch. @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  314717ms] [ERROR] [2026-02-26T19:12:58.580Z] Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  314723ms] [ERROR] [2026-02-26T19:12:58.588Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  314729ms] [ERROR] [SIGNALR] Connection failed: a: Failed to complete negotiation with the server: TypeError: Failed to fetch
+    at K.Pe (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:37900)
+    at async K.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:36074)
+    at async K.start (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:34379)
+    at async q.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:14200)
+    at async q.gt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:13793)
+    at async Object.connect (http://127.0.0.1:4173/js/realtime/signalr_client.js:331:7) @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  315992ms] [ERROR] Access to fetch at 'https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1' from origin 'http://127.0.0.1:4173' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:4173/#/home:0
+[  315992ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1:0
+[  315995ms] [WARNING] [2026-02-26T19:12:59.862Z] Warning: Error from HTTP request. TypeError: Failed to fetch. @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  316000ms] [ERROR] [2026-02-26T19:12:59.864Z] Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  316003ms] [ERROR] [2026-02-26T19:12:59.869Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  316005ms] [ERROR] [SIGNALR] Connection failed: a: Failed to complete negotiation with the server: TypeError: Failed to fetch
+    at K.Pe (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:37900)
+    at async K.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:36074)
+    at async K.start (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:34379)
+    at async q.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:14200)
+    at async q.gt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:13793)
+    at async connect (http://127.0.0.1:4173/js/realtime/signalr_client.js:331:7) @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  318378ms] [ERROR] Access to fetch at 'https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1' from origin 'http://127.0.0.1:4173' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:4173/#/home:0
+[  318379ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1:0
+[  318388ms] [WARNING] [2026-02-26T19:13:02.248Z] Warning: Error from HTTP request. TypeError: Failed to fetch. @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  318394ms] [ERROR] [2026-02-26T19:13:02.258Z] Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  318402ms] [ERROR] [2026-02-26T19:13:02.264Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  318409ms] [ERROR] [SIGNALR] Connection failed: a: Failed to complete negotiation with the server: TypeError: Failed to fetch
+    at K.Pe (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:37900)
+    at async K.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:36074)
+    at async K.start (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:34379)
+    at async q.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:14200)
+    at async q.gt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:13793)
+    at async connect (http://127.0.0.1:4173/js/realtime/signalr_client.js:331:7) @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  318844ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  322780ms] [ERROR] Access to fetch at 'https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1' from origin 'http://127.0.0.1:4173' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:4173/#/home:0
+[  322780ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1:0
+[  322792ms] [WARNING] [2026-02-26T19:13:06.653Z] Warning: Error from HTTP request. TypeError: Failed to fetch. @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  322802ms] [ERROR] [2026-02-26T19:13:06.662Z] Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  322809ms] [ERROR] [2026-02-26T19:13:06.672Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  322821ms] [ERROR] [SIGNALR] Connection failed: a: Failed to complete negotiation with the server: TypeError: Failed to fetch
+    at K.Pe (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:37900)
+    at async K.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:36074)
+    at async K.start (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:34379)
+    at async q.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:14200)
+    at async q.gt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:13793)
+    at async connect (http://127.0.0.1:4173/js/realtime/signalr_client.js:331:7) @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  323907ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  325252ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  325261ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  325272ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  328927ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  331075ms] [ERROR] Access to fetch at 'https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1' from origin 'http://127.0.0.1:4173' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:4173/#/home:0
+[  331075ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1:0
+[  331079ms] [WARNING] [2026-02-26T19:13:14.945Z] Warning: Error from HTTP request. TypeError: Failed to fetch. @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  331083ms] [ERROR] [2026-02-26T19:13:14.948Z] Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  331087ms] [ERROR] [2026-02-26T19:13:14.953Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  331092ms] [ERROR] [SIGNALR] Connection failed: a: Failed to complete negotiation with the server: TypeError: Failed to fetch
+    at K.Pe (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:37900)
+    at async K.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:36074)
+    at async K.start (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:34379)
+    at async q.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:14200)
+    at async q.gt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:13793)
+    at async connect (http://127.0.0.1:4173/js/realtime/signalr_client.js:331:7) @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  333879ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  335934ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  335944ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  335959ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  338908ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  343391ms] [WARNING] Playback stalled; restarting current media @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  343643ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  346636ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  346646ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  346658ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  347767ms] [ERROR] Access to fetch at 'https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1' from origin 'http://127.0.0.1:4173' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:4173/#/home:0
+[  347767ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1:0
+[  347778ms] [WARNING] [2026-02-26T19:13:31.637Z] Warning: Error from HTTP request. TypeError: Failed to fetch. @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  347792ms] [ERROR] [2026-02-26T19:13:31.648Z] Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  347801ms] [ERROR] [2026-02-26T19:13:31.662Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  347807ms] [ERROR] [SIGNALR] Connection failed: a: Failed to complete negotiation with the server: TypeError: Failed to fetch
+    at K.Pe (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:37900)
+    at async K.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:36074)
+    at async K.start (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:34379)
+    at async q.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:14200)
+    at async q.gt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:13793)
+    at async connect (http://127.0.0.1:4173/js/realtime/signalr_client.js:331:7) @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  348659ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  353811ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  357481ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  357486ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  357490ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  358740ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  363851ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  368298ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  368310ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  368325ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  368736ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  373655ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayerHeartBeatStatusJsonArray:0
+[  373883ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  378789ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  379101ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedAdvertisementStatusJsonArray:0
+[  379335ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  379352ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  379366ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  380435ms] [ERROR] Access to fetch at 'https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1' from origin 'http://127.0.0.1:4173' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:4173/#/home:0
+[  380435ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1:0
+[  380451ms] [WARNING] [2026-02-26T19:14:04.305Z] Warning: Error from HTTP request. TypeError: Failed to fetch. @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  380467ms] [ERROR] [2026-02-26T19:14:04.321Z] Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  380483ms] [ERROR] [2026-02-26T19:14:04.337Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  380501ms] [ERROR] [SIGNALR] Connection failed: a: Failed to complete negotiation with the server: TypeError: Failed to fetch
+    at K.Pe (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:37900)
+    at async K.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:36074)
+    at async K.start (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:34379)
+    at async q.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:14200)
+    at async q.gt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:13793)
+    at async connect (http://127.0.0.1:4173/js/realtime/signalr_client.js:331:7) @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  383809ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  388420ms] [WARNING] Playback stalled; restarting current media @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  388652ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  390110ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  390128ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  390141ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  393884ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  398749ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  400855ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  400870ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  400887ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  403884ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  408900ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  411637ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  411651ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  411659ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  413918ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  418832ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  422618ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  422624ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  422630ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  423953ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  428971ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  433389ms] [WARNING] Playback stalled; restarting current media @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  433498ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  433507ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  433518ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  433682ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  433988ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayerHeartBeatStatusJsonArray:0
+[  438701ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  441155ms] [ERROR] Access to fetch at 'https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1' from origin 'http://127.0.0.1:4173' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:4173/#/home:0
+[  441155ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1:0
+[  441170ms] [WARNING] [2026-02-26T19:15:05.025Z] Warning: Error from HTTP request. TypeError: Failed to fetch. @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  441186ms] [ERROR] [2026-02-26T19:15:05.040Z] Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  441200ms] [ERROR] [2026-02-26T19:15:05.056Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  441215ms] [ERROR] [SIGNALR] Connection failed: a: Failed to complete negotiation with the server: TypeError: Failed to fetch
+    at K.Pe (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:37900)
+    at async K.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:36074)
+    at async K.start (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:34379)
+    at async q.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:14200)
+    at async q.gt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:13793)
+    at async connect (http://127.0.0.1:4173/js/realtime/signalr_client.js:331:7) @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  443819ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  444347ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  444362ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  444376ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  448734ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  453749ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedAdvertisementStatusJsonArray:0
+[  453966ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  454391ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  455199ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  455213ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  455225ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  459080ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  459396ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  463788ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  464504ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  465964ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  465983ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  465995ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  468803ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  469430ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  473823ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  474541ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  476789ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  476800ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  476814ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  478381ms] [WARNING] Playback stalled; restarting current media @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  478737ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  479558ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  483756ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  484486ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  487744ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  487754ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  487766ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  488776ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  489502ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  493688ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayerHeartBeatStatusJsonArray:0
+[  493904ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  494613ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  498519ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  498531ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  498545ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  498812ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  499627ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  501780ms] [ERROR] Access to fetch at 'https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1' from origin 'http://127.0.0.1:4173' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:4173/#/home:0
+[  501781ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1:0
+[  501793ms] [WARNING] [2026-02-26T19:16:05.650Z] Warning: Error from HTTP request. TypeError: Failed to fetch. @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  501803ms] [ERROR] [2026-02-26T19:16:05.663Z] Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  501816ms] [ERROR] [2026-02-26T19:16:05.673Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  501827ms] [ERROR] [SIGNALR] Connection failed: a: Failed to complete negotiation with the server: TypeError: Failed to fetch
+    at K.Pe (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:37900)
+    at async K.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:36074)
+    at async K.start (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:34379)
+    at async q.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:14200)
+    at async q.gt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:13793)
+    at async connect (http://127.0.0.1:4173/js/realtime/signalr_client.js:331:7) @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  503828ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  504548ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  508383ms] [WARNING] Playback stalled; restarting current media @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  508651ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  509376ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  509387ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  509399ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  509663ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  513759ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  514681ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  518778ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  519698ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  520310ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  520321ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  520331ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  523800ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedAdvertisementStatusJsonArray:0
+[  524114ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  524716ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  528913ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  529626ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  531164ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  531178ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  531191ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  533830ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  534444ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  538846ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  539461ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  542122ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  542132ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  542145ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  543864ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  544411ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  548883ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  549502ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  553076ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  553086ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  553096ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  553380ms] [WARNING] Playback stalled; restarting current media @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  553705ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  553914ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayerHeartBeatStatusJsonArray:0
+[  554521ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  558714ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  559542ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  562503ms] [ERROR] Access to fetch at 'https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1' from origin 'http://127.0.0.1:4173' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:4173/#/home:0
+[  562504ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1:0
+[  562514ms] [WARNING] [2026-02-26T19:17:06.374Z] Warning: Error from HTTP request. TypeError: Failed to fetch. @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  562525ms] [ERROR] [2026-02-26T19:17:06.384Z] Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  562537ms] [ERROR] [2026-02-26T19:17:06.395Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  562547ms] [ERROR] [SIGNALR] Connection failed: a: Failed to complete negotiation with the server: TypeError: Failed to fetch
+    at K.Pe (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:37900)
+    at async K.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:36074)
+    at async K.start (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:34379)
+    at async q.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:14200)
+    at async q.gt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:13793)
+    at async connect (http://127.0.0.1:4173/js/realtime/signalr_client.js:331:7) @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  563738ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  564024ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  564036ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  564047ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  564476ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  568751ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  569575ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  573872ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  574512ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  575093ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  575106ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  575116ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  578753ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  579500ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  583803ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  585236ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  586369ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  586377ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  586387ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  588788ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedAdvertisementStatusJsonArray:0
+[  589028ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  589422ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  593949ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  594427ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  597959ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  597973ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  597984ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  598377ms] [WARNING] Playback stalled; restarting current media @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  598753ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  599573ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  603772ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  604589ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  608788ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  609608ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  609909ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  609920ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  609929ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  613445ms] [WARNING] [WATCHDOG] Player has playlist but nothing playing, restarting @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  613500ms] [WARNING] [ApplicationChecker] SignalR inactive for 5 minutes @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  613805ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayerHeartBeatStatusJsonArray:0
+[  614121ms] [ERROR] Access to fetch at 'https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1' from origin 'http://127.0.0.1:4173' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:4173/#/home:0
+[  614122ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1:0
+[  614134ms] [WARNING] [2026-02-26T19:17:57.991Z] Warning: Error from HTTP request. TypeError: Failed to fetch. @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  614146ms] [ERROR] [2026-02-26T19:17:58.004Z] Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  614157ms] [ERROR] [2026-02-26T19:17:58.017Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  614171ms] [ERROR] [SIGNALR] Connection failed: a: Failed to complete negotiation with the server: TypeError: Failed to fetch
+    at K.Pe (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:37900)
+    at async K.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:36074)
+    at async K.start (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:34379)
+    at async q.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:14200)
+    at async q.gt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:13793)
+    at async Object.connect (http://127.0.0.1:4173/js/realtime/signalr_client.js:331:7) @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  614185ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  614625ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  618924ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  619538ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  623942ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  624456ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  625188ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  625200ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  625210ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  628959ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  629407ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  633978ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  634418ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  637275ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  637287ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  637300ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  638893ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedAdvertisementStatusJsonArray:0
+[  639202ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  639509ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  643386ms] [WARNING] Playback stalled; restarting current media @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  643637ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  644526ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  648653ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  649542ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  652408ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  652419ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  652431ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  653751ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  654487ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  658765ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  659576ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  663786ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  664554ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  665437ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  665449ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  665460ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  668730ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  669610ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  673389ms] [WARNING] Playback stalled; restarting current media @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  673709ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  674016ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayerHeartBeatStatusJsonArray:0
+[  674546ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  674835ms] [ERROR] Access to fetch at 'https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1' from origin 'http://127.0.0.1:4173' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:4173/#/home:0
+[  674836ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1:0
+[  674847ms] [WARNING] [2026-02-26T19:18:58.705Z] Warning: Error from HTTP request. TypeError: Failed to fetch. @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  674857ms] [ERROR] [2026-02-26T19:18:58.717Z] Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  674870ms] [ERROR] [2026-02-26T19:18:58.727Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  674882ms] [ERROR] [SIGNALR] Connection failed: a: Failed to complete negotiation with the server: TypeError: Failed to fetch
+    at K.Pe (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:37900)
+    at async K.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:36074)
+    at async K.start (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:34379)
+    at async q.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:14200)
+    at async q.gt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:13793)
+    at async connect (http://127.0.0.1:4173/js/realtime/signalr_client.js:331:7) @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  678041ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  678053ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  678067ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  678647ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  679565ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  683686ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  684667ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  688683ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  689269ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  689280ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  689290ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  689601ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  693783ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  694702ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  698800ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  699382ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  700124ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  700133ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  700139ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  703815ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedAdvertisementStatusJsonArray:0
+[  704120ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  704431ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  708848ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  709448ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  710978ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  710989ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  711002ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  713767ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  714436ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  718387ms] [WARNING] Playback stalled; restarting current media @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  718677ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  719483ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  721754ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  721767ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  721779ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  723977ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  724500ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  728706ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  729494ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  730440ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  732495ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  732505ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  732517ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  733716ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayerHeartBeatStatusJsonArray:0
+[  734024ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  734534ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  735457ms] [ERROR] Access to fetch at 'https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1' from origin 'http://127.0.0.1:4173' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:4173/#/home:0
+[  735458ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1:0
+[  735470ms] [WARNING] [2026-02-26T19:19:59.328Z] Warning: Error from HTTP request. TypeError: Failed to fetch. @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  735482ms] [ERROR] [2026-02-26T19:19:59.339Z] Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  735495ms] [ERROR] [2026-02-26T19:19:59.351Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  735506ms] [ERROR] [SIGNALR] Connection failed: a: Failed to complete negotiation with the server: TypeError: Failed to fetch
+    at K.Pe (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:37900)
+    at async K.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:36074)
+    at async K.start (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:34379)
+    at async q.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:14200)
+    at async q.gt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:13793)
+    at async connect (http://127.0.0.1:4173/js/realtime/signalr_client.js:331:7) @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  735526ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  738741ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  739451ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  740476ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  743450ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  743463ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  743473ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  743750ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  744467ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  745494ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  748771ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  749485ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  750510ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  753787ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  754403ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  754703ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  754716ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  754729ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  755530ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  758804ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  759904ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  760545ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  763379ms] [WARNING] Playback stalled; restarting current media @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  763719ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  764434ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  765562ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  765573ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  765583ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  765584ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  768742ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  769430ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  770583ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  773674ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedAdvertisementStatusJsonArray:0
+[  773958ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  774472ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  775597ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  776515ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  776529ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  776542ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  778978ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  779489ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  780614ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  783797ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  784509ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  785634ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  787474ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  787483ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  787496ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  788808ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  789526ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  790651ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  793395ms] [WARNING] Playback stalled; restarting current media @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  793726ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayerHeartBeatStatusJsonArray:0
+[  793995ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  794542ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  795605ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  796019ms] [ERROR] Access to fetch at 'https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1' from origin 'http://127.0.0.1:4173' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:4173/#/home:0
+[  796019ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1:0
+[  796030ms] [WARNING] [2026-02-26T19:20:59.889Z] Warning: Error from HTTP request. TypeError: Failed to fetch. @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  796039ms] [ERROR] [2026-02-26T19:20:59.900Z] Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  796046ms] [ERROR] [2026-02-26T19:20:59.909Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  796059ms] [ERROR] [SIGNALR] Connection failed: a: Failed to complete negotiation with the server: TypeError: Failed to fetch
+    at K.Pe (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:37900)
+    at async K.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:36074)
+    at async K.start (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:34379)
+    at async q.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:14200)
+    at async q.gt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:13793)
+    at async connect (http://127.0.0.1:4173/js/realtime/signalr_client.js:331:7) @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  798430ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  798445ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  798460ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  798742ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  799558ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  801096ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  803760ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  804578ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  805498ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  808778ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  809314ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  809329ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  809341ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  809594ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  810515ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  813794ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  814609ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  815430ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  819251ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  819630ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  820448ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  820460ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  820472ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  820473ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  823799ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  824606ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  825569ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  828844ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  829664ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  830483ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  831329ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  831341ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  831352ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  833863ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  834610ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  835503ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  838377ms] [WARNING] Playback stalled; restarting current media @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  838678ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  839702ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  840522ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  842256ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  842265ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  842277ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  843638ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedAdvertisementStatusJsonArray:0
+[  843898ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  844720ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  845539ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  848915ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  849736ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  850557ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  853215ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  853225ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  853232ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  853730ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayerHeartBeatStatusJsonArray:0
+[  854039ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  854697ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  855391ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  856696ms] [ERROR] Access to fetch at 'https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1' from origin 'http://127.0.0.1:4173' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:4173/#/home:0
+[  856696ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1:0
+[  856702ms] [WARNING] [2026-02-26T19:22:00.566Z] Warning: Error from HTTP request. TypeError: Failed to fetch. @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  856707ms] [ERROR] [2026-02-26T19:22:00.572Z] Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  856711ms] [ERROR] [2026-02-26T19:22:00.577Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  856720ms] [ERROR] [SIGNALR] Connection failed: a: Failed to complete negotiation with the server: TypeError: Failed to fetch
+    at K.Pe (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:37900)
+    at async K.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:36074)
+    at async K.start (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:34379)
+    at async q.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:14200)
+    at async q.gt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:13793)
+    at async connect (http://127.0.0.1:4173/js/realtime/signalr_client.js:331:7) @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  858673ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  859475ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  860491ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  863771ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  864070ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  864088ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  864100ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  864405ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  865510ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  868395ms] [WARNING] Playback stalled; restarting current media @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  868681ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  869509ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  870525ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  873699ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  874437ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  874922ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  874932ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  874943ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  875540ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  878718ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  879514ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  880560ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  883837ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  884556ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  885576ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  886190ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  886199ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  886207ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  888752ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  889471ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  890593ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  893771ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  894485ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  895610ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  896976ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  896989ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  897000ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  898890ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  899437ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  900386ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  903792ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  904520ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  905443ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  907954ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  907962ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  907972ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  908922ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedAdvertisementStatusJsonArray:0
+[  909232ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  909640ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  910420ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  913389ms] [WARNING] Playback stalled; restarting current media @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  913437ms] [WARNING] [WATCHDOG] Player has playlist but nothing playing, restarting @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  913737ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  913993ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayerHeartBeatStatusJsonArray:0
+[  914563ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  915475ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  917321ms] [ERROR] Access to fetch at 'https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1' from origin 'http://127.0.0.1:4173' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:4173/#/home:0
+[  917321ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1:0
+[  917328ms] [WARNING] [2026-02-26T19:23:01.191Z] Warning: Error from HTTP request. TypeError: Failed to fetch. @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  917337ms] [ERROR] [2026-02-26T19:23:01.198Z] Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  917344ms] [ERROR] [2026-02-26T19:23:01.207Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  917358ms] [ERROR] [SIGNALR] Connection failed: a: Failed to complete negotiation with the server: TypeError: Failed to fetch
+    at K.Pe (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:37900)
+    at async K.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:36074)
+    at async K.start (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:34379)
+    at async q.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:14200)
+    at async q.gt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:13793)
+    at async connect (http://127.0.0.1:4173/js/realtime/signalr_client.js:331:7) @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  918752ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  918763ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  918774ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  918775ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  919572ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  920496ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  923771ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  924590ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  925516ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  928788ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  929411ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  929707ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  929720ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  929731ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  930531ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  933806ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  934422ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  935510ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  938799ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  939401ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  940505ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  940520ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  940531ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  940532ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  943841ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  944455ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  945584ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  948858ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  949453ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  950561ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  951620ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  951629ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  951638ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  953879ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  954492ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  955617ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  958385ms] [WARNING] Playback stalled; restarting current media @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  958690ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  959486ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  960635ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  962547ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  962555ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  962565ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  963705ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  964433ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  965654ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  968653ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  969446ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  970669ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  973330ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  973337ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  973348ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  973489ms] [WARNING] [ApplicationChecker] SignalR inactive for 6 minutes @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  973648ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayerHeartBeatStatusJsonArray:0
+[  973864ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  973966ms] [ERROR] Access to fetch at 'https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1' from origin 'http://127.0.0.1:4173' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:4173/#/home:0
+[  973967ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1:0
+[  973971ms] [WARNING] [2026-02-26T19:23:57.836Z] Warning: Error from HTTP request. TypeError: Failed to fetch. @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  973977ms] [ERROR] [2026-02-26T19:23:57.841Z] Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  973982ms] [ERROR] [2026-02-26T19:23:57.847Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  973988ms] [ERROR] [SIGNALR] Connection failed: a: Failed to complete negotiation with the server: TypeError: Failed to fetch
+    at K.Pe (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:37900)
+    at async K.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:36074)
+    at async K.start (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:34379)
+    at async q.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:14200)
+    at async q.gt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:13793)
+    at async Object.connect (http://127.0.0.1:4173/js/realtime/signalr_client.js:331:7) @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  974458ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  975688ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  976406ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedAdvertisementStatusJsonArray:0
+[  978762ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  979483ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  980705ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  983724ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  984214ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  984226ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  984239ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  984500ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  985678ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  988744ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  989402ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  990385ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  993720ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  994422ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  995640ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[  995650ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[  995656ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[  995657ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  998827ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[  999394ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1000371ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1003384ms] [WARNING] Playback stalled; restarting current media @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[ 1003746ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1004464ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1005487ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1006360ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1006410ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[ 1006416ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[ 1006423ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[ 1008761ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1009482ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1010401ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1011428ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1013783ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1014481ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1015419ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1016446ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1017567ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[ 1017579ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[ 1017586ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[ 1018800ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1019516ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1020436ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1021465ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1023711ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1024465ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1025452ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1026477ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1028425ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[ 1028434ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[ 1028444ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[ 1028732ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1029547ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1030412ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1031496ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1033382ms] [WARNING] Playback stalled; restarting current media @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[ 1033747ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1034030ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayerHeartBeatStatusJsonArray:0
+[ 1034513ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1034567ms] [ERROR] Access to fetch at 'https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1' from origin 'http://127.0.0.1:4173' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:4173/#/home:0
+[ 1034568ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.applicationaddons.com/pushNotification/negotiate?negotiateVersion=1:0
+[ 1034576ms] [WARNING] [2026-02-26T19:24:58.437Z] Warning: Error from HTTP request. TypeError: Failed to fetch. @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[ 1034581ms] [ERROR] [2026-02-26T19:24:58.446Z] Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[ 1034585ms] [ERROR] [2026-02-26T19:24:58.450Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: TypeError: Failed to fetch @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[ 1034592ms] [ERROR] [SIGNALR] Connection failed: a: Failed to complete negotiation with the server: TypeError: Failed to fetch
+    at K.Pe (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:37900)
+    at async K.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:36074)
+    at async K.start (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:34379)
+    at async q.yt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:14200)
+    at async q.gt (https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js:1:13793)
+    at async connect (http://127.0.0.1:4173/js/realtime/signalr_client.js:331:7) @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[ 1035491ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1036482ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1038765ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1039296ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[ 1039301ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[ 1039310ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[ 1039583ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1040508ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1042047ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1043683ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1044546ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1045530ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1045786ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedAdvertisementStatusJsonArray:0
+[ 1046510ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1048700ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1049550ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1050166ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[ 1050170ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[ 1050174ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[ 1050541ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1051564ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1053672ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1054576ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1055562ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1056530ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1058735ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1059655ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1060475ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1061088ms] [ERROR] WebSocket connection to 'wss://api.applicationaddons.com/pushNotification' failed: Error during WebSocket handshake: Unexpected response code: 400 @ http://127.0.0.1:4173/js/player/player.js:542
+[ 1061098ms] [ERROR] SignalR/WebSocket error: Event @ http://127.0.0.1:4173/js/services/debug_overlay.js:137
+[ 1061111ms] [WARNING] SignalR/WebSocket connection closed; attempting reconnect @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[ 1061602ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1063388ms] [WARNING] Playback stalled; restarting current media @ http://127.0.0.1:4173/js/services/debug_overlay.js:132
+[ 1063750ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1064607ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1065494ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0
+[ 1066621ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://applicationaddons.com/api/PlayedSongsStatusJsonArray:0

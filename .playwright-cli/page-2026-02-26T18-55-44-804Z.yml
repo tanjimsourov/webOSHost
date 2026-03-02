@@ -1,0 +1,15 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - img "SMC Logo" [ref=e5]
+    - paragraph [ref=e6]: Sign in with your assigned username and token number.
+  - textbox "Username" [active] [ref=e9]
+  - textbox "Token number" [ref=e12]:
+    - /placeholder: Token Number
+  - generic [ref=e13]:
+    - button "Clear fields and go back" [ref=e14] [cursor=pointer]:
+      - img "Cancel" [ref=e15]
+      - generic [ref=e16]: Cancel
+    - button "Sign in" [ref=e17] [cursor=pointer]:
+      - img "Submit" [ref=e18]
+      - generic [ref=e19]: Sign In
+  - status [ref=e20]: Enter your username and token number to continue.
