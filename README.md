@@ -43,7 +43,7 @@ The installable app package extension for LG webOS professional screens is **`.i
    ```
 3. Launch:
    ```bash
-   ares-launch -d <device-name> com.smc.signage
+   ares-launch -d <device-name> com.smc.signage.player
    ```
 
 ### Development Installation

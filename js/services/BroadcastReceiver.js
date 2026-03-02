@@ -29,30 +29,30 @@ class BroadcastReceiver {
             PACKAGE_REMOVED: 'android.intent.action.PACKAGE_REMOVED',
             
             // Application broadcasts
-            CONTENT_REFRESH: 'com.smc.signage.CONTENT_REFRESH',
-            PLAYLIST_CHANGED: 'com.smc.signage.PLAYLIST_CHANGED',
-            DOWNLOAD_COMPLETED: 'com.smc.signage.DOWNLOAD_COMPLETED',
-            STATUS_UPDATE: 'com.smc.signage.STATUS_UPDATE',
-            SERVICE_RESTART: 'com.smc.signage.SERVICE_RESTART',
+            CONTENT_REFRESH: 'com.smc.signage.player.CONTENT_REFRESH',
+            PLAYLIST_CHANGED: 'com.smc.signage.player.PLAYLIST_CHANGED',
+            DOWNLOAD_COMPLETED: 'com.smc.signage.player.DOWNLOAD_COMPLETED',
+            STATUS_UPDATE: 'com.smc.signage.player.STATUS_UPDATE',
+            SERVICE_RESTART: 'com.smc.signage.player.SERVICE_RESTART',
             
             // Media broadcasts
-            MEDIA_PLAYBACK_STARTED: 'com.smc.signage.MEDIA_PLAYBACK_STARTED',
-            MEDIA_PLAYBACK_PAUSED: 'com.smc.signage.MEDIA_PLAYBACK_PAUSED',
-            MEDIA_PLAYBACK_STOPPED: 'com.smc.signage.MEDIA_PLAYBACK_STOPPED',
-            MEDIA_PLAYBACK_COMPLETED: 'com.smc.signage.MEDIA_PLAYBACK_COMPLETED',
+            MEDIA_PLAYBACK_STARTED: 'com.smc.signage.player.MEDIA_PLAYBACK_STARTED',
+            MEDIA_PLAYBACK_PAUSED: 'com.smc.signage.player.MEDIA_PLAYBACK_PAUSED',
+            MEDIA_PLAYBACK_STOPPED: 'com.smc.signage.player.MEDIA_PLAYBACK_STOPPED',
+            MEDIA_PLAYBACK_COMPLETED: 'com.smc.signage.player.MEDIA_PLAYBACK_COMPLETED',
             
             // Network broadcasts
-            NETWORK_CONNECTED: 'com.smc.signage.NETWORK_CONNECTED',
-            NETWORK_DISCONNECTED: 'com.smc.signage.NETWORK_DISCONNECTED',
-            NETWORK_SLOW: 'com.smc.signage.NETWORK_SLOW',
+            NETWORK_CONNECTED: 'com.smc.signage.player.NETWORK_CONNECTED',
+            NETWORK_DISCONNECTED: 'com.smc.signage.player.NETWORK_DISCONNECTED',
+            NETWORK_SLOW: 'com.smc.signage.player.NETWORK_SLOW',
             
             // Device broadcasts
-            BATTERY_LOW: 'com.smc.signage.BATTERY_LOW',
-            STORAGE_LOW: 'com.smc.signage.STORAGE_LOW',
-            MEMORY_LOW: 'com.smc.signage.MEMORY_LOW',
+            BATTERY_LOW: 'com.smc.signage.player.BATTERY_LOW',
+            STORAGE_LOW: 'com.smc.signage.player.STORAGE_LOW',
+            MEMORY_LOW: 'com.smc.signage.player.MEMORY_LOW',
             
             // Custom broadcasts
-            CUSTOM_ACTION: 'com.smc.signage.CUSTOM_ACTION'
+            CUSTOM_ACTION: 'com.smc.signage.player.CUSTOM_ACTION'
         };
     }
 

@@ -1,8 +1,8 @@
 # SMC webOS App Installation (Client Guide)
 
 ## Package
-- App: `com.smc.signage`
-- IPK: `com.smc.signage_2.0.0_client_ready.ipk`
+- App: `com.smc.signage.player`
+- IPK: `com.smc.signage.player_2.0.0_client_ready.ipk`
 
 ## Prerequisites
 1. LG Professional Screen with **Developer Mode app** installed.
@@ -22,7 +22,7 @@ powershell -ExecutionPolicy Bypass -File .\tools\webos\client_install_from_share
   -TvIp "192.168.1.120" `
   -Passphrase "TV_DEVMODE_PASSPHRASE" `
   -DeviceName "client-lg" `
-  -IpkUrl "https://YOUR-LINK/com.smc.signage_2.0.0_client_ready.ipk"
+  -IpkUrl "https://YOUR-LINK/com.smc.signage.player_2.0.0_client_ready.ipk"
 ```
 
 ## If IPK is local file
@@ -31,7 +31,7 @@ powershell -ExecutionPolicy Bypass -File .\tools\webos\client_install_from_share
   -TvIp "192.168.1.120" `
   -Passphrase "TV_DEVMODE_PASSPHRASE" `
   -DeviceName "client-lg" `
-  -IpkPath ".\dist\com.smc.signage_2.0.0_client_ready.ipk"
+  -IpkPath ".\dist\com.smc.signage.player_2.0.0_client_ready.ipk"
 ```
 
 ## What the script does

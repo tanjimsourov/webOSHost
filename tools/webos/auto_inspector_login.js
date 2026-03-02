@@ -12,7 +12,7 @@ function parseArgs(argv) {
   const out = {
     username: '',
     token: '',
-    appId: 'com.smc.signage',
+    appId: 'com.smc.signage.player',
     inspectorJsonUrl: 'http://127.0.0.1:9998/json',
     monitorMs: 120000,
     noHooks: false

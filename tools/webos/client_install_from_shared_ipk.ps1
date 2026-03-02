@@ -8,8 +8,8 @@ param(
     [string]$DeviceName = 'lgclient',
     [string]$Port = '9922',
     [string]$Username = 'prisoner',
-    [string]$AppId = 'com.smc.signage',
-    [string]$IpkPath = '.\\com.smc.signage_2.0.0_client_ready.ipk',
+    [string]$AppId = 'com.smc.signage.player',
+    [string]$IpkPath = '.\\com.smc.signage.player_2.0.0_client_ready.ipk',
     [string]$IpkUrl = ''
 )
 
@@ -75,7 +75,7 @@ function Resolve-IpkFile {
     if (-not [string]::IsNullOrWhiteSpace($IpkUrl)) {
         $downloadDir = Join-Path $env:TEMP 'smc_webos_install'
         New-Item -Path $downloadDir -ItemType Directory -Force | Out-Null
-        $outPath = Join-Path $downloadDir 'com.smc.signage_client_ready.ipk'
+        $outPath = Join-Path $downloadDir 'com.smc.signage.player_client_ready.ipk'
 
         Write-Info "Downloading IPK from URL: $IpkUrl"
         Invoke-WebRequest -Uri $IpkUrl -OutFile $outPath -UseBasicParsing

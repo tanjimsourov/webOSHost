@@ -170,7 +170,7 @@ if (-not (Wait-Port -Port 9998 -MaxAttempts 40 -SleepSeconds 2)) {
 Write-Info 'Running visible automation (settings + login) with console streaming'
 Push-Location $repoRoot
 try {
-    node $nodeScript --username $Username --token $Token --app-id 'com.smc.signage' --monitor-ms $MonitorMs
+    node $nodeScript --username $Username --token $Token --app-id 'com.smc.signage.player' --monitor-ms $MonitorMs
     if ($LASTEXITCODE -ne 0) {
         throw "Automation script failed with exit code $LASTEXITCODE"
     }
