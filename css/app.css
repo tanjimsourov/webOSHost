@@ -2532,3 +2532,10 @@ body,
 .smc-download-meta {
   color: #2f5777;
 }
+
+
+/* Playback privacy: never show token badge on content screen */
+.player-screen #txtTokenId {
+  display: none !important;
+  visibility: hidden !important;
+}

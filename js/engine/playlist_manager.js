@@ -281,17 +281,19 @@
 
     async _handleSongsResponse(responseText, fallbackPlaylistId) {
       var dataArray = parseServerArrayPayload(responseText);
-      var seenTitleIds = [];
+      var seenTitleIds = new Set();
       var localCacheList = [];
-      var seenTitleSet = new Set();
+      var seenSlotKeys = new Set();
 
       for (var i = 0; i < dataArray.length; i++) {
         var item = dataArray[i] || {};
         var playlistId = String(item.splPlaylistId || item.sp_playlist_id || fallbackPlaylistId || '');
         var titleId = String(item.titleId || item.title_id || '');
+        var serialNo = toInt(item.srno || item.serial_no, 0);
         if (!playlistId || !titleId) continue;
-        if (seenTitleSet.has(titleId)) continue;
-        seenTitleSet.add(titleId);
+        var slotKey = playlistId + '|' + String(serialNo) + '|' + titleId;
+        if (seenSlotKeys.has(slotKey)) continue;
+        seenSlotKeys.add(slotKey);
 
         var songRecord = {
           sch_id: playlistId,
@@ -306,20 +308,20 @@
           sp_playlist_id: playlistId,
           song_path: '',
           song_url: String(item.TitleUrl || item.song_url || ''),
-          serial_no: toInt(item.srno || item.serial_no, 0),
+          serial_no: serialNo,
           filesize: String(item.FileSize || item.filesize || ''),
           timeinterval: toInt(item.TimeInterval || item.timeinterval, 0),
           mediatype: String(item.mediatype || item.mediaType || ''),
           reftime: toInt(item.urlRefershTime || item.reftime, 0),
         };
 
-        seenTitleIds.push(songRecord.title_id);
+        seenTitleIds.add(songRecord.title_id);
         localCacheList.push(songRecord);
         await this.songsDataSource.checkifSongExist(songRecord);
       }
 
       if (fallbackPlaylistId) {
-        var staleSongs = await this.songsDataSource.getSongListNotAvailableinWebResponse(seenTitleIds, fallbackPlaylistId);
+        var staleSongs = await this.songsDataSource.getSongListNotAvailableinWebResponse(Array.from(seenTitleIds), fallbackPlaylistId);
         for (var j = 0; j < staleSongs.length; j++) {
           await this.songsDataSource.deleteSongs(staleSongs[j], false);
         }
@@ -328,28 +330,30 @@
           await this.songsDataSource.removeDuplicateSongsForPlaylist(fallbackPlaylistId);
         }
 
-        // Rebuild cache from DB to keep runtime state aligned with persisted deduped records.
+        // Rebuild cache from DB, preserving every playlist slot order.
         var downloaded = await this.songsDataSource.getSongsThoseAreDownloaded(fallbackPlaylistId);
         var missing = await this.songsDataSource.getSongsThoseAreNotDownloaded(fallbackPlaylistId);
         var merged = [];
-        var byTitle = new Map();
+        var bySlot = new Map();
 
         for (var k = 0; k < downloaded.length; k++) {
           var d = downloaded[k];
-          var dk = String((d && (d.title_id || d._id)) || '');
+          var dk = String((d && (d.serial_no || '')) || '') + '|' + String((d && (d.title_id || d._id)) || '');
           if (!dk) continue;
-          byTitle.set(dk, d);
+          bySlot.set(dk, d);
         }
         for (var m = 0; m < missing.length; m++) {
           var s = missing[m];
-          var sk = String((s && (s.title_id || s._id)) || '');
+          var sk = String((s && (s.serial_no || '')) || '') + '|' + String((s && (s.title_id || s._id)) || '');
           if (!sk) continue;
-          if (!byTitle.has(sk)) {
-            byTitle.set(sk, s);
+          if (!bySlot.has(sk)) {
+            bySlot.set(sk, s);
           }
         }
 
-        merged = Array.from(byTitle.values());
+        merged = Array.from(bySlot.values()).sort(function (a, b) {
+          return Number(a.serial_no || 0) - Number(b.serial_no || 0);
+        });
         this._cachedSongsByPlaylist.set(fallbackPlaylistId, merged.length > 0 ? merged : localCacheList);
       }
     }

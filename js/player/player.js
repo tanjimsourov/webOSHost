@@ -45,6 +45,29 @@
       this._heartbeatInterval = null;
       // Remote control
       this.signalClient = null;
+      // Raw websocket control is disabled by default; SignalRClient handles commands centrally.
+      this._enableRawSignalSocket = !!(typeof window !== 'undefined' && window.ENABLE_PLAYER_RAW_SIGNALR === true);
+      // Blob URLs created from cached media for offline playback.
+      this._activeObjectUrls = new Set();
+      // Guard rails to prevent rapid repeated advance loops on media failures.
+      this._advanceTimer = null;
+      this._advanceInProgress = false;
+      // Avoid aggressive self-recovery loops that can cause visible blinking.
+      this._lastStallRecoveryAt = 0;
+      this._stallRecoveryCooldownMs = 60000;
+      this._stallProgressTimeoutMs = 30000;
+      // Runtime-detected capability: whether media elements can load blob URLs.
+      this._blobMediaSupport = null;
+      // Blob-backed cache playback is enabled by default so downloaded items play offline.
+      // Set window.ENABLE_BLOB_CACHE = false to force direct URL streaming for debugging.
+      this._enableBlobMediaCache = !(typeof window !== 'undefined' && window.ENABLE_BLOB_CACHE === false);
+      // Guard against media elements that remain in loading state indefinitely.
+      this._mediaStartupTimer = null;
+      this._mediaStartupTimeoutMs = 15000;
+      // Only images use blob cache by default; AV blob playback is unstable on some webOS builds.
+      this._enableAvBlobCache = !!(typeof window !== 'undefined' && window.ENABLE_AV_BLOB_CACHE === true);
+      // Timer used for image/web display intervals.
+      this._mediaIntervalTimer = null;
       // Start the heartbeat timer
       this._startHeartbeat();
     }
@@ -84,6 +107,30 @@
       this.audio.id = 'player-audio';
       this.audio.style.display = 'none';
       this.container.appendChild(this.audio);
+
+      // Audio overlay keeps playback visibly active when the current item is audio-only.
+      this.audioOverlay = document.createElement('div');
+      this.audioOverlay.id = 'player-audio-overlay';
+      this.audioOverlay.style.position = 'absolute';
+      this.audioOverlay.style.left = '0';
+      this.audioOverlay.style.right = '0';
+      this.audioOverlay.style.top = '0';
+      this.audioOverlay.style.bottom = '0';
+      this.audioOverlay.style.display = 'none';
+      this.audioOverlay.style.alignItems = 'center';
+      this.audioOverlay.style.justifyContent = 'center';
+      this.audioOverlay.style.textAlign = 'center';
+      this.audioOverlay.style.padding = '24px';
+      this.audioOverlay.style.fontFamily = '"Century Gothic", sans-serif';
+      this.audioOverlay.style.fontSize = '36px';
+      this.audioOverlay.style.fontWeight = '700';
+      this.audioOverlay.style.letterSpacing = '0.6px';
+      this.audioOverlay.style.color = '#f4f6ff';
+      this.audioOverlay.style.textShadow = '0 2px 8px rgba(0,0,0,0.55)';
+      this.audioOverlay.style.background = 'radial-gradient(circle at center, rgba(25,30,52,0.30), rgba(0,0,0,0.72))';
+      this.audioOverlay.style.zIndex = '3';
+      this.audioOverlay.textContent = 'Audio playback';
+      this.container.appendChild(this.audioOverlay);
       // Image element
       this.img = document.createElement('img');
       this.img.id = 'player-image';
@@ -106,23 +153,28 @@
       // For progress monitoring
       this.video.ontimeupdate = () => this._onProgress();
       this.audio.ontimeupdate = () => this._onProgress();
+      // Mark startup as successful as soon as media becomes decodable/playable.
+      this.video.addEventListener('loadeddata', () => this._clearMediaStartupWatchdog());
+      this.video.addEventListener('playing', () => this._clearMediaStartupWatchdog());
+      this.audio.addEventListener('loadeddata', () => this._clearMediaStartupWatchdog());
+      this.audio.addEventListener('playing', () => this._clearMediaStartupWatchdog());
 
       // Skip broken media and keep playlist progression alive.
       this.video.onerror = () => {
         console.warn('Video element error; skipping to next item');
-        this._onMediaEnded();
+        this._scheduleAdvance(150);
       };
       this.audio.onerror = () => {
         console.warn('Audio element error; skipping to next item');
-        this._onMediaEnded();
+        this._scheduleAdvance(150);
       };
       this.img.onerror = () => {
         console.warn('Image element error; skipping to next item');
-        this._onMediaEnded();
+        this._scheduleAdvance(150);
       };
       this.iframe.onerror = () => {
         console.warn('Web content error; skipping to next item');
-        this._onMediaEnded();
+        this._scheduleAdvance(150);
       };
     }
 
@@ -143,8 +195,8 @@
       this.currentSongIndex = 0;
       this.resumeIndex = null;
       this.isPlayingAd = false;
-      // Start remote control connection on first load
-      if (!this.signalClient) {
+      // Optional raw websocket connection (disabled by default).
+      if (this._enableRawSignalSocket && !this.signalClient) {
         this._connectSignalR();
       }
       this._playCurrentSong();
@@ -176,55 +228,57 @@
         await this._playAd(timeAd);
         return;
       }
-      // Determine the media URL: prefer downloaded path
-      const url = (Number(song.is_downloaded) === 1 && song.song_path) ? song.song_path : song.song_url;
+      // Determine media URL. For downloaded items, first try a cached blob URL.
+      const source = await this._resolveSongPlaybackSource(song);
+      const url = source.url;
       if (!url) {
         console.warn('Song has no URL', song);
-        this._onMediaEnded();
+        this._scheduleAdvance(200);
         return;
       }
       // Hide all elements
       this._hideAllMedia();
-      // Choose element based on extension
-      const ext = this._getExtension(url);
+      this._clearMediaIntervalAdvance();
+      // Choose element based on extension and metadata fallback.
+      const mediaKind = this._getMediaKind(song, source.typeHintUrl || url);
       const startedAt = Date.now();
-      if (ext === 'mp4' || ext === 'm4v' || ext === 'mov') {
+      this._lastProgressTime = startedAt;
+      if (mediaKind === 'video') {
         this.video.src = url;
         this.video.style.display = '';
+        this._armMediaStartupWatchdog('video', url);
         try {
           await this.video.play();
         } catch (err) {
           console.error('Video play error', err);
-          setTimeout(() => this._onMediaEnded(), 50);
+          this._scheduleAdvance(150);
         }
-      } else if (ext === 'mp3' || ext === 'wav' || ext === 'aac') {
+      } else if (mediaKind === 'audio') {
         this.audio.src = url;
         this.audio.style.display = '';
+        this._showAudioOverlay(song, false);
+        this._armMediaStartupWatchdog('audio', url);
         try {
           await this.audio.play();
         } catch (err) {
           console.error('Audio play error', err);
-          setTimeout(() => this._onMediaEnded(), 50);
+          this._scheduleAdvance(150);
         }
-      } else if (ext === 'jpg' || ext === 'jpeg' || ext === 'png' || ext === 'gif' || ext === 'bmp') {
+      } else if (mediaKind === 'image') {
         this.img.src = url;
         this.img.style.display = '';
         // Use the song's timeinterval to determine how long to display the image
         const intervalMs = (Number(song.timeinterval) || Number(song.time) || 5) * 1000;
-        setTimeout(() => {
-          this._onMediaEnded();
-        }, intervalMs);
+        this._scheduleMediaIntervalAdvance(intervalMs);
       } else {
         // Fallback: treat as web content
         this.iframe.src = url;
         this.iframe.style.display = '';
         const intervalMs = (Number(song.timeinterval) || 10) * 1000;
-        setTimeout(() => {
-          this._onMediaEnded();
-        }, intervalMs);
+        this._scheduleMediaIntervalAdvance(intervalMs);
       }
       // Record that the song has started playing.  Store the start
-      // timestamp so that minute‑based ads can be scheduled relative
+      // timestamp so that minute-based ads can be scheduled relative
       // to playback duration.
       this._currentSongStartTime = startedAt;
       // SECTION 1: Report played song via StatusReporter (handles server + offline queue)
@@ -248,12 +302,27 @@
       }
     }
 
+
+    _scheduleAdvance(delayMs = 120) {
+      if (this._advanceTimer) {
+        return;
+      }
+      this._advanceTimer = setTimeout(() => {
+        this._advanceTimer = null;
+        this._onMediaEnded();
+      }, Math.max(0, Number(delayMs) || 0));
+    }
     /**
      * Handle the end of the current media.  This method triggers
      * advertisement insertion based on song and minute counters and
      * advances playback to the next song.
      */
     async _onMediaEnded() {
+      if (this._advanceInProgress) {
+        return;
+      }
+      this._advanceInProgress = true;
+      try {
       // If an advertisement was playing simply resume the next song
       if (this.isPlayingAd) {
         this.isPlayingAd = false;
@@ -273,14 +342,14 @@
         soundType: song.mediatype || '',
         flavour: '',
       };
-      // Minute‑based advertisement check
+      // Minute-based advertisement check
       const minuteAd = await this.adsManager.checkMinuteAd(elapsed, filter);
       if (minuteAd) {
         this.resumeIndex = (this.currentSongIndex + 1) % this.playlist.length;
         await this._playAd(minuteAd);
         return;
       }
-      // Song‑based advertisement check
+      // Song-based advertisement check
       const songAd = await this.adsManager.checkSongAd(filter);
       if (songAd) {
         this.resumeIndex = (this.currentSongIndex + 1) % this.playlist.length;
@@ -289,6 +358,11 @@
       }
       // Advance to next song
       this._playSongAtIndex((this.currentSongIndex + 1) % this.playlist.length);
+      } finally {
+        this._advanceInProgress = false;
+        this._clearMediaStartupWatchdog();
+        this._clearMediaIntervalAdvance();
+      }
     }
 
     /**
@@ -424,9 +498,10 @@
     async _playAd(ad) {
       if (!ad) return;
       this.isPlayingAd = true;
-      // Determine the media source.  Prefer the downloaded path if
-      // download_status==1; otherwise fall back to the remote URL.
-      const url = (Number(ad.download_status) === 1 && ad.adv_path) ? ad.adv_path : ad.adv_file_url;
+      this._lastProgressTime = Date.now();
+      // Determine media URL. For downloaded ads, first try a cached blob URL.
+      const source = await this._resolveAdPlaybackSource(ad);
+      const url = source.url;
       if (!url) {
         console.warn('Advertisement has no URL', ad);
         this.isPlayingAd = false;
@@ -434,43 +509,43 @@
       }
       // Hide other media elements
       this._hideAllMedia();
-      const ext = this._getExtension(url);
-      if (ext === 'mp4' || ext === 'm4v' || ext === 'mov') {
+      this._clearMediaIntervalAdvance();
+      const mediaKind = this._getMediaKind(ad, source.typeHintUrl || url);
+      if (mediaKind === 'video') {
         this.video.src = url;
         this.video.style.display = '';
         this.video.onended = () => this._onMediaEnded();
+        this._armMediaStartupWatchdog('video', url);
         try {
           await this.video.play();
         } catch (err) {
           console.error('Video ad play error', err);
-          setTimeout(() => this._onMediaEnded(), 50);
+          this._scheduleAdvance(150);
         }
-      } else if (ext === 'mp3' || ext === 'wav' || ext === 'aac') {
+      } else if (mediaKind === 'audio') {
         this.audio.src = url;
         this.audio.style.display = '';
         this.audio.onended = () => this._onMediaEnded();
+        this._showAudioOverlay(ad, true);
+        this._armMediaStartupWatchdog('audio', url);
         try {
           await this.audio.play();
         } catch (err) {
           console.error('Audio ad play error', err);
-          setTimeout(() => this._onMediaEnded(), 50);
+          this._scheduleAdvance(150);
         }
-      } else if (ext === 'jpg' || ext === 'jpeg' || ext === 'png' || ext === 'gif' || ext === 'bmp') {
+      } else if (mediaKind === 'image') {
         this.img.src = url;
         this.img.style.display = '';
         // Use advertisement's timeinterval to determine display duration
         const intervalMs = (Number(ad.timeinterval) || 5) * 1000;
-        setTimeout(() => {
-          this._onMediaEnded();
-        }, intervalMs);
+        this._scheduleMediaIntervalAdvance(intervalMs);
       } else {
         // Web advertisement
         this.iframe.src = url;
         this.iframe.style.display = '';
         const intervalMs = (Number(ad.timeinterval) || 10) * 1000;
-        setTimeout(() => {
-          this._onMediaEnded();
-        }, intervalMs);
+        this._scheduleMediaIntervalAdvance(intervalMs);
       }
       // SECTION 1: Report played ad via StatusReporter (handles server + offline queue)
       if (window.StatusReporter) {
@@ -500,9 +575,305 @@
       this.audio.style.display = 'none';
       this.img.style.display = 'none';
       this.iframe.style.display = 'none';
+      this._hideAudioOverlay();
+      this._clearMediaStartupWatchdog();
+      this._clearMediaIntervalAdvance();
       // Pause any media that might still be playing
       try { this.video.pause(); } catch (err) {}
       try { this.audio.pause(); } catch (err) {}
+      // Clear previous sources and release blob URLs.
+      try { this.video.removeAttribute('src'); } catch (err) {}
+      try { this.audio.removeAttribute('src'); } catch (err) {}
+      try { this.img.removeAttribute('src'); } catch (err) {}
+      try { this.iframe.removeAttribute('src'); } catch (err) {}
+      this._revokeObjectUrls();
+    }
+
+
+    _showAudioOverlay(record, isAdvertisement) {
+      if (!this.audioOverlay) return;
+      var baseName = '';
+      if (record) {
+        baseName = String(
+          record.titles ||
+          record.title ||
+          record.adv_name ||
+          record.name ||
+          record.title_id ||
+          record.adv_id ||
+          ''
+        ).trim();
+      }
+      var labelPrefix = isAdvertisement ? 'Advertisement audio' : 'Now playing audio';
+      this.audioOverlay.textContent = baseName ? (labelPrefix + ': ' + baseName) : labelPrefix;
+      this.audioOverlay.style.display = 'flex';
+    }
+
+    _hideAudioOverlay() {
+      if (!this.audioOverlay) return;
+      this.audioOverlay.style.display = 'none';
+    }
+
+    _armMediaStartupWatchdog(kind, url) {
+      this._clearMediaStartupWatchdog();
+      var mediaKind = String(kind || '').toLowerCase();
+      if (mediaKind !== 'video' && mediaKind !== 'audio') {
+        return;
+      }
+      var element = mediaKind === 'video' ? this.video : this.audio;
+      if (!element) return;
+      var expectedUrl = String(url || '').trim();
+      this._mediaStartupTimer = setTimeout(() => {
+        this._mediaStartupTimer = null;
+        try {
+          var activeUrl = String(element.currentSrc || element.getAttribute('src') || '').trim();
+          var sameSource = !expectedUrl || !activeUrl || activeUrl === expectedUrl;
+          var hasProgress = (Number(element.readyState || 0) >= 2) || (Number(element.currentTime || 0) > 0);
+          if (!sameSource || hasProgress) {
+            return;
+          }
+          console.warn('Media startup timed out; skipping item', mediaKind, activeUrl || expectedUrl);
+        } catch (err) {
+          // best effort
+        }
+        this._scheduleAdvance(120);
+      }, this._mediaStartupTimeoutMs);
+    }
+
+    _clearMediaStartupWatchdog() {
+      if (!this._mediaStartupTimer) return;
+      clearTimeout(this._mediaStartupTimer);
+      this._mediaStartupTimer = null;
+    }
+
+    _scheduleMediaIntervalAdvance(intervalMs) {
+      this._clearMediaIntervalAdvance();
+      var ms = Math.max(0, Number(intervalMs) || 0);
+      this._mediaIntervalTimer = setTimeout(() => {
+        this._mediaIntervalTimer = null;
+        this._scheduleAdvance(150);
+      }, ms);
+    }
+
+    _clearMediaIntervalAdvance() {
+      if (!this._mediaIntervalTimer) return;
+      clearTimeout(this._mediaIntervalTimer);
+      this._mediaIntervalTimer = null;
+    }
+
+    _normalizeMediaUrl(url) {
+      if (url == null) return '';
+      return String(url).trim();
+    }
+
+    _trackObjectUrl(url) {
+      if (typeof url === 'string' && url.indexOf('blob:') === 0) {
+        this._activeObjectUrls.add(url);
+      }
+    }
+
+    _revokeObjectUrls() {
+      if (!this._activeObjectUrls || this._activeObjectUrls.size === 0) {
+        return;
+      }
+      this._activeObjectUrls.forEach((url) => {
+        try {
+          URL.revokeObjectURL(url);
+        } catch (err) {
+          // best effort
+        }
+      });
+      this._activeObjectUrls.clear();
+    }
+
+
+    async _detectBlobMediaSupport() {
+      try {
+        if (typeof URL === 'undefined' || typeof URL.createObjectURL !== 'function' || typeof Image === 'undefined') {
+          return false;
+        }
+        const base64 = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/w8AAgMBgJ0f7S0AAAAASUVORK5CYII=';
+        const binary = atob(base64);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < binary.length; i++) {
+          bytes[i] = binary.charCodeAt(i);
+        }
+        const blob = new Blob([bytes], { type: 'image/png' });
+        const blobUrl = URL.createObjectURL(blob);
+
+        const supported = await new Promise((resolve) => {
+          const img = new Image();
+          let done = false;
+          const finish = (ok) => {
+            if (done) return;
+            done = true;
+            try { URL.revokeObjectURL(blobUrl); } catch (err) {}
+            resolve(ok);
+          };
+
+          const timer = setTimeout(() => finish(false), 1800);
+          img.onload = () => {
+            clearTimeout(timer);
+            finish(true);
+          };
+          img.onerror = () => {
+            clearTimeout(timer);
+            finish(false);
+          };
+          img.src = blobUrl;
+        });
+
+        return !!supported;
+      } catch (err) {
+        return false;
+      }
+    }
+    async _resolveCachedBlobUrl(url) {
+      var sourceUrl = this._normalizeMediaUrl(url);
+      if (!sourceUrl) return '';
+      if (/^(blob:|data:)/i.test(sourceUrl)) {
+        return sourceUrl;
+      }
+      if (!this._enableBlobMediaCache) {
+        return '';
+      }
+      if (!window.caches || typeof caches.open !== 'function' || typeof URL === 'undefined' || typeof URL.createObjectURL !== 'function') {
+        return '';
+      }
+      if (this._blobMediaSupport === null) {
+        this._blobMediaSupport = await this._detectBlobMediaSupport();
+      }
+      if (!this._blobMediaSupport) {
+        return '';
+      }
+      try {
+        var cache = await caches.open('downloads');
+        var variants = [sourceUrl];
+        try {
+          var decoded = decodeURI(sourceUrl);
+          if (decoded && variants.indexOf(decoded) === -1) {
+            variants.push(decoded);
+          }
+        } catch (err) {
+          // ignore decode issues
+        }
+        var response = null;
+        for (var i = 0; i < variants.length; i++) {
+          response = await cache.match(variants[i]);
+          if (response) break;
+        }
+        if (!response) return '';
+        var blob = await response.blob();
+        if (!blob || !blob.size) return '';
+        var blobUrl = URL.createObjectURL(blob);
+        this._trackObjectUrl(blobUrl);
+        return blobUrl;
+      } catch (err) {
+        return '';
+      }
+    }
+
+    async _resolveSongPlaybackSource(song) {
+      var remoteUrl = this._normalizeMediaUrl(song && (song.song_url || song.title_url || song.url || song.src));
+      var localUrl = this._normalizeMediaUrl(song && (song.song_path || song.local_path));
+      var isDownloaded = Number(song && (song.is_downloaded || song.download_status || 0)) === 1;
+      var cacheCandidates = [];
+
+      if (localUrl) cacheCandidates.push(localUrl);
+      if (remoteUrl && cacheCandidates.indexOf(remoteUrl) === -1) cacheCandidates.push(remoteUrl);
+
+      var resolvedKind = this._getMediaKind(song, remoteUrl || localUrl || '');
+      var allowBlobCache = (resolvedKind === 'image') || this._enableAvBlobCache;
+
+      if (isDownloaded && allowBlobCache && cacheCandidates.length > 0) {
+        for (var i = 0; i < cacheCandidates.length; i++) {
+          var candidate = cacheCandidates[i];
+          var cached = await this._resolveCachedBlobUrl(candidate);
+          if (cached) {
+            return { url: cached, typeHintUrl: candidate };
+          }
+        }
+        console.warn('Downloaded song not found in cache, falling back to stream URL', song && (song.title_id || song.titles || song.title || 'unknown'));
+      }
+
+      var fallbackUrl = '';
+      if (/^(https?:|blob:|data:)/i.test(remoteUrl)) {
+        fallbackUrl = remoteUrl;
+      } else if (/^(https?:|blob:|data:)/i.test(localUrl)) {
+        fallbackUrl = localUrl;
+      }
+
+      return {
+        url: fallbackUrl,
+        typeHintUrl: remoteUrl || localUrl || fallbackUrl,
+      };
+    }
+
+    async _resolveAdPlaybackSource(ad) {
+      var remoteUrl = this._normalizeMediaUrl(ad && (ad.adv_file_url || ad.url || ad.src));
+      var localUrl = this._normalizeMediaUrl(ad && ad.adv_path);
+      var isDownloaded = Number(ad && (ad.download_status || ad.is_downloaded || 0)) === 1;
+      var cacheCandidates = [];
+
+      if (localUrl) cacheCandidates.push(localUrl);
+      if (remoteUrl && cacheCandidates.indexOf(remoteUrl) === -1) cacheCandidates.push(remoteUrl);
+
+      var resolvedKind = this._getMediaKind(ad, remoteUrl || localUrl || '');
+      var allowBlobCache = (resolvedKind === 'image') || this._enableAvBlobCache;
+
+      if (isDownloaded && allowBlobCache && cacheCandidates.length > 0) {
+        for (var i = 0; i < cacheCandidates.length; i++) {
+          var candidate = cacheCandidates[i];
+          var cached = await this._resolveCachedBlobUrl(candidate);
+          if (cached) {
+            return { url: cached, typeHintUrl: candidate };
+          }
+        }
+        console.warn('Downloaded advertisement not found in cache, falling back to stream URL', ad && (ad.adv_id || ad.adv_name || 'unknown'));
+      }
+
+      var fallbackUrl = '';
+      if (/^(https?:|blob:|data:)/i.test(remoteUrl)) {
+        fallbackUrl = remoteUrl;
+      } else if (/^(https?:|blob:|data:)/i.test(localUrl)) {
+        fallbackUrl = localUrl;
+      }
+
+      return {
+        url: fallbackUrl,
+        typeHintUrl: remoteUrl || localUrl || fallbackUrl,
+      };
+    }
+
+    _getMediaKind(record, urlHint) {
+      var ext = this._getExtension(urlHint || '');
+      if (ext === 'mp4' || ext === 'm4v' || ext === 'mov' || ext === 'webm' || ext === 'm3u8') {
+        return 'video';
+      }
+      if (ext === 'mp3' || ext === 'wav' || ext === 'aac' || ext === 'm4a' || ext === 'ogg') {
+        return 'audio';
+      }
+      if (ext === 'jpg' || ext === 'jpeg' || ext === 'png' || ext === 'gif' || ext === 'bmp' || ext === 'webp') {
+        return 'image';
+      }
+
+      var type = String(
+        (record && (
+          record.mediatype ||
+          record.mediaType ||
+          record.adv_play_type ||
+          record.adv_sound_type ||
+          record.type
+        )) || ''
+      ).toLowerCase();
+
+      if (type.indexOf('video') !== -1) return 'video';
+      if (type.indexOf('audio') !== -1 || type.indexOf('song') !== -1 || type.indexOf('sound') !== -1) return 'audio';
+      if (type.indexOf('image') !== -1 || type.indexOf('photo') !== -1) return 'image';
+      if (type.indexOf('url') !== -1 || type.indexOf('web') !== -1) return 'web';
+
+      // Keep legacy fallback for unknown content.
+      return 'web';
     }
 
     /**
@@ -529,6 +900,28 @@
      */
     _onProgress() {
       this._lastProgressTime = Date.now();
+      this._clearMediaStartupWatchdog();
+    }
+
+    _isAvElementActivelyPlaying(el) {
+      if (!el) return false;
+      var display = '';
+      try {
+        display = window.getComputedStyle(el).display;
+      } catch (err) {}
+      if (display === 'none') return false;
+      var src = '';
+      try {
+        src = String(el.currentSrc || el.getAttribute('src') || '').trim();
+      } catch (err) {}
+      if (!src) return false;
+      if (el.ended) return false;
+      if (el.paused) return false;
+      // In buffering/metadata states timeupdate can be sparse; don't classify as stalled yet.
+      if (typeof el.readyState === 'number' && el.readyState < 2) {
+        return false;
+      }
+      return true;
     }
 
     /**
@@ -554,18 +947,23 @@
       this._lastProgressTime = Date.now();
       this._progressInterval = setInterval(() => {
         const now = Date.now();
-        if (now - this._lastProgressTime > 30000) {
-          // No progress for over 30 seconds; restart current media
-          console.warn('Playback stalled; restarting current media');
-          if (this.isPlayingAd) {
-            // Force end and resume song
-            this._onMediaEnded();
-          } else {
-            // Restart current song
-            this._playSongAtIndex(this.currentSongIndex);
-          }
-          this._lastProgressTime = now;
+        // Only self-heal when active audio/video is truly playing and has gone stale.
+        var isActiveAv = this._isAvElementActivelyPlaying(this.video) || this._isAvElementActivelyPlaying(this.audio);
+        if (!isActiveAv) return;
+
+        if (now - this._lastProgressTime <= this._stallProgressTimeoutMs) return;
+        if (now - this._lastStallRecoveryAt <= this._stallRecoveryCooldownMs) return;
+
+        console.warn('Playback stalled; restarting current media');
+        this._lastStallRecoveryAt = now;
+        if (this.isPlayingAd) {
+          // Force end and resume song
+          this._scheduleAdvance(120);
+        } else {
+          // Restart current song
+          this._playSongAtIndex(this.currentSongIndex);
         }
+        this._lastProgressTime = now;
       }, 15000);
     }
 
@@ -794,3 +1192,4 @@
   // Expose globally
   window.Player = Player;
 })();
+

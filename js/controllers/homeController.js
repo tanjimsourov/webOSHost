@@ -1,6 +1,6 @@
 /**
  * Home controller orchestrating playlist, advertisement, download and
- * playback management. This implementation follows the high‑level
+ * playback management. This implementation follows the high-level
  * ordering of the Android HomeActivity: schedules are fetched,
  * playlists and songs retrieved, downloads enqueued, advertisements
  * fetched, and finally playback begins. A PlaylistWatcher monitors
@@ -12,7 +12,7 @@
  *   - Fetches playlist schedules and content from the server using
  *     identifiers persisted in preferences (dfclientid, token_no,
  *     cityid, countryid, stateid, rotation etc.).
- *   - Computes the current day number (1–7 with Sunday=1) to mirror
+ *   - Computes the current day number (1-7 with Sunday=1) to mirror
  *     Utilities.getCurrentDayNumber() for weekNo.
  *   - Enqueues songs and advertisements that are not yet downloaded
  *     into the DownloadManager and starts the download process.
@@ -1505,8 +1505,9 @@
   function mount(context) {
     log.info('mount', context && context.route ? 'route=' + context.route : '');
     
-    // Initialize media engine first
-    initializeMediaEngine();
+    // Legacy media engine is disabled by default because it conflicts with the modern Player pipeline.
+    // Enable only for debugging legacy parity behavior.
+    var enableLegacyHomeFlow = !!(typeof window !== 'undefined' && window.ENABLE_LEGACY_HOME_FLOW === true);
     
     // Instantiate managers. AdsManager and DownloadManager are
     // constructed without arguments; PlaylistManager accepts an
@@ -1543,66 +1544,72 @@
      * - Start media engine
      * - Set up completion handlers
      */
-    (function initEnhancedSystem() {
-      try {
-        // Initialize UI elements (mirroring Java lines 771-800)
-        initializeUIElements();
-        
-        // Load playlists for current time (mirroring Java getPlaylistsForCurrentTime)
-        getPlaylistsForCurrentTime();
-        
-        // Load advertisements (mirroring Java getAdvertisements)
-        getAdvertisements();
-        
-        // Check for songs to be downloaded
-        var songs = getSongsToBeDownloaded();
-        var ads = getAdvertisementsToBeDownloaded();
-        
-        if ((songs && songs.length > 0) || (ads && ads.length > 0)) {
-          if (songs && songs.length > 0 && state.downloadManager && typeof state.downloadManager.addSongsToQueue === 'function') {
-            state.downloadManager.addSongsToQueue(songs);
+    if (enableLegacyHomeFlow) {
+      (function initEnhancedSystem() {
+        try {
+          // Initialize UI elements (mirroring Java lines 771-800)
+          initializeUIElements();
+
+          // Load playlists for current time (mirroring Java getPlaylistsForCurrentTime)
+          getPlaylistsForCurrentTime();
+
+          // Load advertisements (mirroring Java getAdvertisements)
+          getAdvertisements();
+
+          // Check for songs to be downloaded
+          var songs = getSongsToBeDownloaded();
+          var ads = getAdvertisementsToBeDownloaded();
+
+          if ((songs && songs.length > 0) || (ads && ads.length > 0)) {
+            if (songs && songs.length > 0 && state.downloadManager && typeof state.downloadManager.addSongsToQueue === 'function') {
+              state.downloadManager.addSongsToQueue(songs);
+            }
+            if (ads && ads.length > 0 && state.downloadManager && typeof state.downloadManager.addAdsToQueue === 'function') {
+              state.downloadManager.addAdsToQueue(ads);
+            }
+            setWaitingText('Preparing downloads...');
+            // Start download service if needed
+            if (state.downloadManager && !window.dmIsRunning(state.downloadManager)) {
+              state.downloadManager.start();
+            }
           }
-          if (ads && ads.length > 0 && state.downloadManager && typeof state.downloadManager.addAdsToQueue === 'function') {
-            state.downloadManager.addAdsToQueue(ads);
+
+          // Initialize playlist watcher
+          if (window.PlaylistWatcher) {
+            // Legacy watcher API is not available in all builds; guard to avoid mount-time failures.
+            var legacyWatcher = new window.PlaylistWatcher();
+            if (
+              legacyWatcher &&
+              typeof legacyWatcher.setContext === 'function' &&
+              typeof legacyWatcher.setPlaylistStatusListener === 'function' &&
+              typeof legacyWatcher.setWatcher === 'function'
+            ) {
+              state.playlistWatcher = legacyWatcher;
+              state.playlistWatcher.setContext(window);
+              state.playlistWatcher.setPlaylistStatusListener({
+                onPlaylistStatusChanged: onPlaylistStatusChanged,
+                playAdvertisement: playAdvertisement,
+                checkForPendingDownloads: checkForPendingDownloads,
+                refreshPlayerControls: refreshPlayerControls,
+                shouldUpdateTimeOnServer: shouldUpdateTimeOnServer
+              });
+              state.playlistWatcher.setWatcher();
+            } else {
+              log.info('Skipping legacy PlaylistWatcher wiring; modern watcher initialized later in mount');
+            }
           }
-          setWaitingText('Preparing downloads...');
-          // Start download service if needed
-          if (state.downloadManager && !window.dmIsRunning(state.downloadManager)) {
-            state.downloadManager.start();
-          }
+
+          log.info('Enhanced system initialization completed');
+
+        } catch (error) {
+          log.error('Error in enhanced system initialization:', error);
         }
-        
-        // Initialize playlist watcher
-        if (window.PlaylistWatcher) {
-          // Legacy watcher API is not available in all builds; guard to avoid mount-time failures.
-          var legacyWatcher = new window.PlaylistWatcher();
-          if (
-            legacyWatcher &&
-            typeof legacyWatcher.setContext === 'function' &&
-            typeof legacyWatcher.setPlaylistStatusListener === 'function' &&
-            typeof legacyWatcher.setWatcher === 'function'
-          ) {
-            state.playlistWatcher = legacyWatcher;
-            state.playlistWatcher.setContext(window);
-            state.playlistWatcher.setPlaylistStatusListener({
-              onPlaylistStatusChanged: onPlaylistStatusChanged,
-              playAdvertisement: playAdvertisement,
-              checkForPendingDownloads: checkForPendingDownloads,
-              refreshPlayerControls: refreshPlayerControls,
-              shouldUpdateTimeOnServer: shouldUpdateTimeOnServer
-            });
-            state.playlistWatcher.setWatcher();
-          } else {
-            log.info('Skipping legacy PlaylistWatcher wiring; modern watcher initialized later in mount');
-          }
-        }
-        
-        log.info('Enhanced system initialization completed');
-        
-      } catch (error) {
-        log.error('Error in enhanced system initialization:', error);
-      }
-    })();
+      })();
+    } else {
+      // Ensure legacy UI references still exist for helper methods used by this controller.
+      initializeUIElements();
+      log.info('Legacy HomeActivity media flow disabled; using modern Player pipeline only');
+    }
 
     /**
      * UI binding (parity with Java HomeActivity)
@@ -2033,10 +2040,13 @@
       });
     }
 
-    // SECTION 2: Start watchdog service
-    if (window.WatchdogService) {
+    // SECTION 2: Start watchdog service (disabled by default to avoid duplicate recovery loops).
+    var enableExternalWatchdog = !!(typeof window !== 'undefined' && window.ENABLE_WATCHDOG_SERVICE === true);
+    if (enableExternalWatchdog && window.WatchdogService) {
       log.info('Starting watchdog service');
       WatchdogService.start({ player: player });
+    } else {
+      log.info('Watchdog service disabled; Player internal watchdog remains active');
     }
 
     // SECTION 2 (Prayer): Start prayer manager
@@ -2269,9 +2279,11 @@
         var songsDataSource = new SongsDataSource();
         var playlistId = playlist.sp_playlist_id || playlist.spl_playlist_id;
         var downloadedSongs = await songsDataSource.getSongsThoseAreDownloaded(playlistId);
+        if (!Array.isArray(downloadedSongs)) downloadedSongs = [];
         // Enqueue any missing songs for this playlist
         var missing = await songsDataSource.getSongsThoseAreNotDownloaded(playlistId);
-        if (missing && missing.length > 0) {
+        if (!Array.isArray(missing)) missing = [];
+        if (missing.length > 0) {
           downloadManager.addSongsToQueue(missing);
           setWaitingText('Downloading playlist media... (' + missing.length + ' pending)');
           if (!window.dmIsRunning(downloadManager)) {
@@ -2279,15 +2291,31 @@
           }
         }
 
-        // Prefer cached media; when empty but online, allow streaming from metadata.
+        // Build playable list from full playlist while online so all scheduled items are shown.
+        // Player still prefers local cache per item via its source resolver.
         var playable = downloadedSongs;
-        if ((!playable || playable.length === 0) && navigator.onLine && missing && missing.length > 0) {
-          playable = missing;
+        if (navigator.onLine && missing.length > 0) {
+          var merged = downloadedSongs.concat(missing);
+          var byOrder = new Map();
+          for (var mIdx = 0; mIdx < merged.length; mIdx++) {
+            var item = merged[mIdx] || {};
+            var key = String(item.serial_no || '') + '|' + String(item.title_id || item._id || item.song_url || item.song_path || mIdx);
+            var prev = byOrder.get(key);
+            if (!prev || (Number(prev.is_downloaded || 0) !== 1 && Number(item.is_downloaded || 0) === 1)) {
+              byOrder.set(key, item);
+            }
+          }
+          playable = Array.from(byOrder.values()).sort(function (a, b) {
+            return (a.serial_no || 0) - (b.serial_no || 0);
+          });
         }
 
         if (playable && playable.length > 0) {
+          log.info('Loading playlist into player', playlistId, 'downloaded=' + downloadedSongs.length, 'pending=' + missing.length, 'playable=' + playable.length);
           player.loadPlaylist(playable);
-          clearWaitingText();
+          if (missing.length === 0) {
+            clearWaitingText();
+          }
         } else {
           log.warn('No playable songs available for active playlist', playlistId);
           setWaitingText('Waiting for downloaded content...');
