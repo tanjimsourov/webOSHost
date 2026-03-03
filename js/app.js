@@ -80,6 +80,10 @@
 
   const identity = deviceIdentity.getDeviceIdentity();
   console.log('Device identity:', identity);
+
+  if (window.compatProfile && typeof window.compatProfile.getProfile === 'function') {
+    console.log('[APP] Runtime compatibility profile:', window.compatProfile.getProfile());
+  }
   // Example: set a default rotation preference if not already set
   if (!prefs.getString('rotation')) {
     prefs.setString('rotation', '0');
