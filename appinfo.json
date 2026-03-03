@@ -1,6 +1,6 @@
 {
     "id":  "com.smc.signage.player",
-    "version":  "1.0.0",
+    "version": "1.0.1",
     "vendor":  "SMC Technologies",
     "type":  "web",
     "main":  "index.html",
